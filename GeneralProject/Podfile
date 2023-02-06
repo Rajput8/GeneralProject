@@ -1,0 +1,26 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'GeneralProject' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for GeneralProject
+  pod 'GoogleMaps'
+  pod 'R.swift'
+  pod 'SwiftLint'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'FBSDKLoginKit'
+  pod 'GoogleSignIn'
+
+  target 'GeneralProjectTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'GeneralProjectUITests' do
+    # Pods for testing
+  end
+
+end

@@ -1,0 +1,51 @@
+//Validation Error Messages
+"empty_err_msg" = "Empty %@";
+"invalid_err_msg" = "Invalid %@ format";
+"invalid_with_reason_err_msg" = "Invalid %@. %@";
+"password_not_matched" = "%@ and %@ is not matched.";
+"invalid_password" = "Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character";
+"email_err" = "Please enter valid email & cannot be empty";
+
+//Remote Request Error Messages
+"unexpected_error" = "Unexpected error: if this problem continues, please contact support";
+"parse_error_message" = "We encountered a problem interpreting the response from the server. Support has been notified. Contact support for assistance if the problem continues.";
+"server_err" = "The server encountered an error handling this request. Support has been notified.";
+"must_be_logged_in_to_access_this" = "You must be logged in to access this";
+"something_went_wrong" = "Something went wrong";
+"timed_out" = "The request timed out.!";
+"null_response" = "Null Response";
+"null_data_in_response" = "Null data in api response";
+"null_url" = "Null URL";
+
+//Internet Connectivity Error Messages
+"connectivity_err" = "Something went wrong ! \n Please Check your internet Connection or Try again later.";
+"no_internet_connection" = "No Internet Connection";
+"device_connected_with_internet_warning" = "Make sure your device is connected to the internet.";
+
+//Permission Error Messages
+"not_determined" = "Not Determined";
+"not_allow" = "Not Allow";
+"allow" = "Allow";
+"restricted" = "Restricted";
+"allow_when_in_ use" = "Allow when in use";
+"setting_problem" = "Please try again, for the same please goes into settings.";
+
+//DateUtil
+"last_hour" = "Last Hour";
+"today" = "Today";
+"yesterday" = "Yesterday";
+"this_week" = "This Week";
+"time" = "Time";
+"error_date_range_selection" = "From date should be less than To date";
+"years_ago" = "%@ years ago";
+"years_days_ago" = "%@ years %@ days ago";
+"years_days_in_future" = "%@ years %@ days in the future";
+"years_in_future" = "%@ years in the future ";
+
+//General
+"dismiss" = "Dismiss";
+"logout_msg" = "Do you want to logout?";
+"yes" = "Yes";
+"no" = "No";
+"no_further_information_available" = "No further information is available at this time";
+"update_interface_title" = "Update interface title";
