@@ -5,12 +5,15 @@ enum APIFailureTypes: Error {
     case connectivity
     case httpError
     case authentication
-    case noGymId
+    case serverError
+    case encoding
+    case parsingError
     case invalidRequest
     case invalidResponse
-    case serverError
+    case invalidURL
     case nullData
-    case encoding
+    case invalidData
     case unknown
-    case parsingError
+    case errorMessageWithError(_ error: Error?, _ errorDesc: String?)
+    case errorMessage(_ errorDesc: String?)
 }

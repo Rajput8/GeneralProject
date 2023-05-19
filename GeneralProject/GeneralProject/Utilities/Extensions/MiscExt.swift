@@ -10,9 +10,9 @@ extension Collection {
      let arr = ["foo", "bar"]
      let str1 = arr[optional: 1] // --> str1 is now Optional("bar")
      if let str2 = arr[optional: 2] {
-     print(str2) // --> this still wouldn't run
+     LogHandler.reportLogOnConsole(nil, str2) // --> this still wouldn't run
      } else {
-     print("No string found at that index") // --> this would be printed
+     pLogHandler.reportLogOnConsole(nil,  "No string found at that index") // --> this would be printed
      }
      */
 }

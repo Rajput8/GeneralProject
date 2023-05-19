@@ -1,6 +1,25 @@
 import UIKit
 
 extension UITextField {
+
+    @IBInspectable var placeHolderColor: UIColor? {
+        get { return self.placeHolderColor }
+        set {
+            if let placeHolderValue = self.placeholder, !placeHolderValue.isEmpty {
+                let color = newValue ?? .darkGray
+                self.attributedPlaceholder = NSAttributedString(string: placeHolderValue,
+                                                                attributes: [.foregroundColor: color])
+            }
+        }
+    }
+
+    @IBInspectable var doneAccessory: Bool {
+        get { return self.doneAccessory }
+        set (hasDone) {
+            if hasDone { addDoneButtonOnKeyboard() }
+        }
+    }
+
     func addDoneButtonOnKeyboard() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()

@@ -9,9 +9,9 @@ class SocialPlatformAuthorizationUtil {
     fileprivate static var googleClientID = "99838163458-ufemgib9nb4dcvnto8jqi6sbv1o6angs.apps.googleusercontent.com"
     fileprivate static var appStoreAppID = "1534079797"
 
-    public static func appleAuthorization(_ currentVC: UIViewController,
-                                          _ delegate: ASAuthorizationControllerDelegate,
-                                          _ presentController: ASAuthorizationControllerPresentationContextProviding) {
+    static func appleAuthorization(_ currentVC: UIViewController,
+                                   _ delegate: ASAuthorizationControllerDelegate,
+                                   _ presentController: ASAuthorizationControllerPresentationContextProviding) {
         if #available(iOS 13.0, *) {
             let appleIDProvider = ASAuthorizationAppleIDProvider()
             let request = appleIDProvider.createRequest()
@@ -26,7 +26,7 @@ class SocialPlatformAuthorizationUtil {
         }
     }
 
-    public static func googleAuthorization(_ currentVC: UIViewController) {
+    static func googleAuthorization(_ currentVC: UIViewController) {
         let signInConfig = GIDConfiguration.init(clientID: googleClientID)
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: currentVC) { user, error in
             guard error == nil else { return }
@@ -36,7 +36,7 @@ class SocialPlatformAuthorizationUtil {
         }
     }
 
-    public static func facebookAuthorization(_ currentVC: UIViewController) {
+    static func facebookAuthorization(_ currentVC: UIViewController) {
         if AccessToken.current == nil {
             loginManager.logIn(permissions: ["public_profile", "email"], from: currentVC) { (result, error) in
                 if let resultInfo = result {
@@ -80,7 +80,7 @@ class SocialPlatformAuthorizationUtil {
         connection.start()
     }
 
-    public static func socialPlatformAuthorizationAPI(_ userData: AuthorizationRequestModel, _ currentVC: UIViewController) {
+    static func socialPlatformAuthorizationAPI(_ userData: AuthorizationRequestModel, _ currentVC: UIViewController) {
         // TODOs: under construction 😊
     }
 }

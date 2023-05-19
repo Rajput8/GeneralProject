@@ -1,70 +1,43 @@
 import Foundation
 
-struct UploadFile {
-    var contentType: UploadTaskContent?
-    var contentName: String?
-    var contentData: Data?
-
-    enum CodingKeys: String, CodingKey {
-        case contentType, originalNameOfContent, dataFormatOfContent
-    }
-
-    init(contentType: UploadTaskContent? = nil, contentName: String? = nil, contentData: Data? = nil) {
-        self.contentType = contentType
-        self.contentName = contentName
-        self.contentData = contentData
-    }
-}
-
 struct APIRequestParams {
     var endpoint: APIEndpoints
-    var delegate: APIRequestDelegate
-    var mediaType: PostType?
-    var methodType: HTTPMethodType? = .post
+    var methodType: APIRequestMethodType
+    var contentType: APIRequestContentType?
     var requestModelData: Data?
-    var postBody: [String: Any]?
-    var queryParams: [String: Any]?
-    var uploadTaskKey: UploadTaskKey?
-    let mediaContent: [UploadFile]?
-    var assetNum: String?
-    var sensorId: String?
+    var params: [String: Any]?
+    let mediaContent: [MultipartMediaRequestParams]?
 
     init(_ endpoint: APIEndpoints,
-         _ delegate: APIRequestDelegate,
-         _ mediaType: PostType?,
-         _ methodType: HTTPMethodType?,
+         _ methodType: APIRequestMethodType,
+         _ contentType: APIRequestContentType? = nil,
          _ requestModelData: Data? = nil,
-         _ postBody: [String: Any]? = nil,
-         _ queryParams: [String: Any]? = nil,
-         _ uploadTaskKey: UploadTaskKey? = nil,
-         _ mediaContent: [UploadFile]? = nil,
-         _ assetNum: String? = nil,
-         _ sensorId: String? = nil) {
+         _ params: [String: Any]? = nil,
+         _ mediaContent: [MultipartMediaRequestParams]? = nil) {
 
         self.endpoint = endpoint
-        self.delegate = delegate
-        self.mediaType = mediaType
         self.methodType = methodType
+        self.contentType = contentType
         self.requestModelData = requestModelData
-        self.postBody = postBody
-        self.queryParams = queryParams
-        self.uploadTaskKey = uploadTaskKey
+        self.params = params
         self.mediaContent = mediaContent
-        self.assetNum = assetNum
-        self.sensorId = sensorId
     }
 }
 
-struct URLSessionTaskResponse {
-    var request: URLRequest
-    var data: Data?
-    var response: URLResponse?
-    var err: Error?
+struct MultipartMediaRequestParams {
+    var filename: String
+    var data: Data
+    var keyname: MediaFileKeyname
+    var contentType: MediaContentType
 
-    init(_ request: URLRequest, _ data: Data?, _ response: URLResponse?, _ err: Error?) {
-        self.request = request
-        self.data = data
-        self.response = response
-        self.err = err
+    enum MediaContentType: String {
+        case imageJPEG = "image/jpeg"
+        case imagePNG = "image/png"
+        case videoMP4 = "video/mp4"
+        case videoMOV = "video/quicktime"
+    }
+
+    enum MediaFileKeyname: String {
+        case media = "profile_pic"
     }
 }

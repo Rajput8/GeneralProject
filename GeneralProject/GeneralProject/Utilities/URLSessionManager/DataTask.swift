@@ -1,23 +1,24 @@
-import UIKit
+import Foundation
 
-class SessionDataTask {
+final class SessionDataTask {
 
-    public static func dataTask<T: Decodable>(type: T.Type, _ requestParams: APIRequestParams) {
+    static func dataTask<T: Decodable>(type: T.Type, _ requestParams: APIRequestParams, _ completion: @escaping APIConstants.Handler<T>) {
 
         guard let request = SessionURLRequest.urlRequest(requestParams) else {
             SwiftSpinner.hide()
-            requestParams.delegate.apiRequestFailure("unexpected_error".localized(), .invalidRequest)
+            completion(.failure(.invalidRequest))
             return
         }
+
         // SwiftSpinner.show("Please wait", animated: true)
-        let strURL = APIRequestResources.requestURL(request: request)
+        LogHandler.requestLog(request)
         Monitor().startMonitoring { [ ] connection, reachable in
-            let reachableStatus = Monitor.getCurrentConnectivityStatus(connection, reachable: reachable)
+            let reachableStatus = Monitor.getCurrentConnectivityStatus(connection, reachable)
             if reachableStatus == .yes {
                 let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-                    LogHandler.responseLog(strURL, data, response, error)
-                    let taskResponse = URLSessionTaskResponse.init(request, data, response, error)
-                    SessionTaskResponseHandler.taskResponseHandler(requestParams, taskResponse, T.self)
+                    LogHandler.responseLog(data, response, error)
+                    APIResponse.responseHandler(data, response, error, completion)
+                    SwiftSpinner.hide()
                 })
                 task.resume()
             } else {

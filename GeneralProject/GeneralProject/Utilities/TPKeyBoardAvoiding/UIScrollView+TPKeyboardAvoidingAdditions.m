@@ -1,4 +1,3 @@
-
 //MARK: GITHUB Source URL: https://github.com/michaeltyson/TPKeyboardAvoiding
 
 #import "UIScrollView+TPKeyboardAvoidingAdditions.h"
@@ -84,20 +83,18 @@ static const int kStateKey;
     dispatch_after(delay, dispatch_get_main_queue(), ^{
         
         // Shrink view's inset by the keyboard's height, and scroll to show the text field/view being edited
-        [UIView beginAnimations:nil context:NULL];
-        
+
+
+        [UIView beginAnimations: nil context: NULL];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationWillStartSelector:@selector(keyboardViewAppear:context:)];
         [UIView setAnimationDidStopSelector:@selector(keyboardViewDisappear:finished:context:)];
-        
         [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
         [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]];
         
         UIView *firstResponder = [self TPKeyboardAvoiding_findFirstResponderBeneathView:self];
         if ( firstResponder ) {
-            
             self.contentInset = [self TPKeyboardAvoiding_contentInsetForKeyboard];
-            
             CGFloat viewableHeight = self.bounds.size.height - self.contentInset.top - self.contentInset.bottom;
             [self setContentOffset:CGPointMake(self.contentOffset.x,
                                                [self TPKeyboardAvoiding_idealOffsetForView:firstResponder
@@ -107,7 +104,6 @@ static const int kStateKey;
         
         self.scrollIndicatorInsets = self.contentInset;
         [self layoutIfNeeded];
-        
         [UIView commitAnimations];
     });
 }
@@ -153,7 +149,7 @@ static const int kStateKey;
     self.contentInset = state.priorInset;
     self.scrollIndicatorInsets = state.priorScrollIndicatorInsets;
     self.pagingEnabled = state.priorPagingEnabled;
-	[self layoutIfNeeded];
+    [self layoutIfNeeded];
     [UIView commitAnimations];
 }
 
@@ -167,7 +163,7 @@ static const int kStateKey;
 - (void)TPKeyboardAvoiding_updateFromContentSizeChange {
     TPKeyboardAvoidingState *state = self.keyboardAvoidingState;
     if ( state.keyboardVisible ) {
-		state.priorContentSize = self.contentSize;
+        state.priorContentSize = self.contentSize;
         self.contentInset = [self TPKeyboardAvoiding_contentInsetForKeyboard];
     }
 }
@@ -211,9 +207,9 @@ static const int kStateKey;
     CGFloat visibleSpace = self.bounds.size.height - self.contentInset.top - self.contentInset.bottom;
     
     CGPoint idealOffset
-        = CGPointMake(self.contentOffset.x,
-                      [self TPKeyboardAvoiding_idealOffsetForView:firstResponder
-                                            withViewingAreaHeight:visibleSpace]);
+    = CGPointMake(self.contentOffset.x,
+                  [self TPKeyboardAvoiding_idealOffsetForView:firstResponder
+                                        withViewingAreaHeight:visibleSpace]);
 
     // Ordinarily we'd use -setContentOffset:animated:YES here, but it interferes with UIScrollView
     // behavior which automatically ensures that the first responder is within its bounds
@@ -257,9 +253,9 @@ static const int kStateKey;
             
             // Find views beneath, or to the right. For those views that match, choose the view closest to the top left
             if ( childView != priorView
-                    && ((fabs(CGRectGetMinY(frame) - CGRectGetMinY(priorFrame)) < FLT_EPSILON && CGRectGetMinX(frame) > CGRectGetMinX(priorFrame))
-                        || CGRectGetMinY(frame) > CGRectGetMinY(priorFrame))
-                    && (!*bestCandidate || heuristic > bestCandidateHeuristic) ) {
+                && ((fabs(CGRectGetMinY(frame) - CGRectGetMinY(priorFrame)) < FLT_EPSILON && CGRectGetMinX(frame) > CGRectGetMinX(priorFrame))
+                    || CGRectGetMinY(frame) > CGRectGetMinY(priorFrame))
+                && (!*bestCandidate || heuristic > bestCandidateHeuristic) ) {
                 
                 *bestCandidate = childView;
                 bestCandidateHeuristic = heuristic;
@@ -272,7 +268,7 @@ static const int kStateKey;
 
 - (CGFloat)TPKeyboardAvoiding_nextInputViewHeuristicForViewFrame:(CGRect)frame {
     return  (-frame.origin.y * 1000.0) // Prefer elements closest to top (most important)
-          + (-frame.origin.x);         // Prefer elements closest to left
+    + (-frame.origin.x);         // Prefer elements closest to left
 }
 
 - (BOOL)TPKeyboardAvoiding_viewHiddenOrUserInteractionNotEnabled:(UIView *)view {
@@ -426,8 +422,8 @@ static const int kStateKey;
 
 - (void)TPKeyboardAvoiding_initializeView:(UIView*)view {
     if ( [view isKindOfClass:[UITextField class]]
-            && (((UITextField*)view).returnKeyType == UIReturnKeyDefault || (((UITextField*)view).returnKeyType == UIReturnKeyNext))
-            && (![(UITextField*)view delegate] || [(UITextField*)view delegate] == (id<UITextFieldDelegate>)self) ) {
+        && (((UITextField*)view).returnKeyType == UIReturnKeyDefault || (((UITextField*)view).returnKeyType == UIReturnKeyNext))
+        && (![(UITextField*)view delegate] || [(UITextField*)view delegate] == (id<UITextFieldDelegate>)self) ) {
         [(UITextField*)view setDelegate:(id<UITextFieldDelegate>)self];
         UIView *otherView = [self TPKeyboardAvoiding_findNextInputViewAfterView:view beneathView:self];
         

@@ -1,24 +1,14 @@
 import Foundation
 
-enum PostType {
-    case json
-    case form
-    case multipartFormData
-    case data
-
-    public func contentTypeHeader(boundary: String? = nil) -> String {
-        switch self {
-        case .json: return "application/json"
-        case .form: return "application/x-www-form-urlencoded"
-        case .multipartFormData:
-            guard let boundary = boundary else { return "multipart/form-data" }
-            return "multipart/form-data; boundary=\(boundary)"
-        case .data: return "application/json"
-        }
-    }
+enum APIRequestEnvironmentType {
+    case local
+    case qaTesting
+    case beta
+    case replica
+    case prod
 }
 
-enum HTTPMethodType: String {
+enum APIRequestMethodType: String {
     case post = "POST"
     case get = "GET"
     case patch = "PATCH"
@@ -26,14 +16,40 @@ enum HTTPMethodType: String {
     case put = "PUT"
 }
 
-enum UploadTaskKey: String {
-    case profilePic = "profile_pic"
-    case groupImage = "group_image"
+enum APIRequestContentType {
+    case json
+    case data
+    case form
+    case multipartFormData
+
+    public func value(boundary: String? = nil) -> String {
+        switch self {
+        case .json, .data: return "application/json"
+        case .form: return "application/x-www-form-urlencoded"
+        case .multipartFormData:
+            guard let boundary = boundary else { return "multipart/form-data" }
+            return "multipart/form-data; boundary=\(boundary)"
+        }
+    }
 }
 
-enum UploadTaskContent: String {
-    case imageJPEG = "image/jpeg"
-    case imagePNG = "image/png"
-    case videoMP4 = "video/mp4"
-    case videoMOV = "video/quicktime"
+enum APIRequestAuthorizationType {
+    case basicAuth
+    case bearerToken
+    case apiKey
+    case noAuth
+
+    static func value(type: APIRequestAuthorizationType) -> String? {
+        switch type {
+        case .bearerToken:
+            return "Bearer \(APIConstants.bearerToken)"
+        case .basicAuth:
+            let basicAuth = APIRequestResources.basicAuth(APIConstants.authUsername, APIConstants.authPassword)
+            return "Basic \(basicAuth)"
+        case .apiKey:
+            return APIConstants.apiKey
+        default: break
+        }
+        return nil
+    }
 }

@@ -1,10 +1,3 @@
-//
-//  GeneralProjectUITestsLaunchTests.swift
-//  GeneralProjectUITests
-//
-//  Created by Micheal Kloster on 06/12/22.
-//
-
 import XCTest
 
 final class GeneralProjectUITestsLaunchTests: XCTestCase {

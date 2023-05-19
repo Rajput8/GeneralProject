@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeyboardStateListener.shared.start()
         AppAppearance.setupAppearance()
         AppConfiguration.disableAutolayoutErrorWarning()
+        // MARK: - Fetching Registered In-App Purchase products
+        IAPUtil.manager.getRegisteredProducts(.yearlySubscription)
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
@@ -45,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: "CloudHawk")
+        let container = NSPersistentContainer(name: "GeneralProject")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

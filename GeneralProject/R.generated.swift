@@ -310,12 +310,28 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 2 images.
+  /// This `R.file` struct is generated, and contains static references to 1 files.
+  struct file {
+    /// Resource file `AppConstants.plist`.
+    static let appConstantsPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "AppConstants", pathExtension: "plist")
+
+    /// `bundle.url(forResource: "AppConstants", withExtension: "plist")`
+    static func appConstantsPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.appConstantsPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.image` struct is generated, and contains static references to 3 images.
   struct image {
     /// Image `appLogo`.
     static let appLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "appLogo")
     /// Image `back`.
     static let back = Rswift.ImageResource(bundle: R.hostingBundle, name: "back")
+    /// Image `profile`.
+    static let profile = Rswift.ImageResource(bundle: R.hostingBundle, name: "profile")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "appLogo", bundle: ..., traitCollection: ...)`
@@ -328,6 +344,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "back", bundle: ..., traitCollection: ...)`
     static func back(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.back, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "profile", bundle: ..., traitCollection: ...)`
+    static func profile(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.profile, compatibleWith: traitCollection)
     }
     #endif
 
@@ -365,18 +388,30 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
     /// Nib `EmployeeCell`.
     static let employeeCell = _R.nib._EmployeeCell()
+    /// Nib `ReceiverCell`.
+    static let receiverCell = _R.nib._ReceiverCell()
     /// Nib `ScaleBarView`.
     static let scaleBarView = _R.nib._ScaleBarView()
+    /// Nib `SenderCell`.
+    static let senderCell = _R.nib._SenderCell()
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "EmployeeCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.employeeCell) instead")
     static func employeeCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.employeeCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ReceiverCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.receiverCell) instead")
+    static func receiverCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.receiverCell)
     }
     #endif
 
@@ -388,33 +423,48 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SenderCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.senderCell) instead")
+    static func senderCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.senderCell)
+    }
+    #endif
+
     static func employeeCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> EmployeeCell? {
       return R.nib.employeeCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? EmployeeCell
+    }
+
+    static func receiverCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ReceiverCell? {
+      return R.nib.receiverCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ReceiverCell
     }
 
     static func scaleBarView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.scaleBarView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func senderCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SenderCell? {
+      return R.nib.senderCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SenderCell
+    }
+
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `EmployeeCell`.
     static let employeeCell: Rswift.ReuseIdentifier<EmployeeCell> = Rswift.ReuseIdentifier(identifier: "EmployeeCell")
+    /// Reuse identifier `ReceiverCell`.
+    static let receiverCell: Rswift.ReuseIdentifier<ReceiverCell> = Rswift.ReuseIdentifier(identifier: "ReceiverCell")
+    /// Reuse identifier `SenderCell`.
+    static let senderCell: Rswift.ReuseIdentifier<SenderCell> = Rswift.ReuseIdentifier(identifier: "SenderCell")
 
     fileprivate init() {}
   }
 
-  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.appBasicInfo` struct is generated, and contains static references to 0 localization keys.
-    struct appBasicInfo {
-      fileprivate init() {}
-    }
-
-    /// This `R.string.localizableMessage` struct is generated, and contains static references to 40 localization keys.
+    /// This `R.string.localizableMessage` struct is generated, and contains static references to 47 localization keys.
     struct localizableMessage {
       /// Value: %@ and %@ is not matched.
       static let password_not_matched = Rswift.StringResource(key: "password_not_matched", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -434,6 +484,8 @@ struct R: Rswift.Validatable {
       static let dismiss = Rswift.StringResource(key: "dismiss", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Do you want to logout?
       static let logout_msg = Rswift.StringResource(key: "logout_msg", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Either the given endpoint is invalid or please revalidate APIRequestURL.generateRequestURL(requestParams)
+      static let null_url_request = Rswift.StringResource(key: "null_url_request", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Empty %@
       static let empty_err_msg = Rswift.StringResource(key: "empty_err_msg", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: From date should be less than To date
@@ -462,14 +514,20 @@ struct R: Rswift.Validatable {
       static let null_response = Rswift.StringResource(key: "null_response", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Null URL
       static let null_url = Rswift.StringResource(key: "null_url", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Null data in api response
+      /// Value: Null data in api response or invalid data format
       static let null_data_in_response = Rswift.StringResource(key: "null_data_in_response", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Please check ApiRequestResponse value on Debug console
+      static let failure_api_response = Rswift.StringResource(key: "failure_api_response", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Please enter valid email & cannot be empty
       static let email_err = Rswift.StringResource(key: "email_err", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Please try again, for the same please goes into settings.
       static let setting_problem = Rswift.StringResource(key: "setting_problem", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Response data not parseable to string
+      static let data_not_parseable_to_string = Rswift.StringResource(key: "data_not_parseable_to_string", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Restricted
       static let restricted = Rswift.StringResource(key: "restricted", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Seem you set requestParams.contentType = data, but you forgot to pass requestParams.requestModelData. Please make model data via using ParamsDataUtil.generateModelData(model) and then set into requestModelData.
+      static let null_request_param_data = Rswift.StringResource(key: "null_request_param_data", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Something went wrong
       static let something_went_wrong = Rswift.StringResource(key: "something_went_wrong", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Something went wrong !   Please Check your internet Connection or Try again later.
@@ -488,14 +546,20 @@ struct R: Rswift.Validatable {
       static let unexpected_error = Rswift.StringResource(key: "unexpected_error", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Update interface title
       static let update_interface_title = Rswift.StringResource(key: "update_interface_title", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: We encountered a problem interpreting the response from the server. Support has been notified. Contact support for assistance if the problem continues.
+      /// Value: We encountered a problem interpreting the response from the server. Support has been notified. Contact support for assistance if the problem continues. Parse error is: %@
       static let parse_error_message = Rswift.StringResource(key: "parse_error_message", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Yes
       static let yes = Rswift.StringResource(key: "yes", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Yesterday
       static let yesterday = Rswift.StringResource(key: "yesterday", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: You appear to have forgotten to specify authorizationTypeValue, please produce authorizationTypeValue using APIRequestAuthorizationType.value(type:.bearerToken). Then insert it into the request header.
+      static let null_authorization_value = Rswift.StringResource(key: "null_authorization_value", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: You must be logged in to access this
       static let must_be_logged_in_to_access_this = Rswift.StringResource(key: "must_be_logged_in_to_access_this", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: product info is: %@ and product price is: %@
+      static let in_app_purchase_product_info = Rswift.StringResource(key: "in_app_purchase_product_info", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: unable to generate data from model
+      static let unable_to_generate_data_from_model = Rswift.StringResource(key: "unable_to_generate_data_from_model", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
 
       /// Value: %@ and %@ is not matched.
       static func password_not_matched(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
@@ -622,6 +686,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("logout_msg", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Either the given endpoint is invalid or please revalidate APIRequestURL.generateRequestURL(requestParams)
+      static func null_url_request(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("null_url_request", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "null_url_request"
+        }
+
+        return NSLocalizedString("null_url_request", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
       /// Value: Empty %@
@@ -812,7 +889,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("null_url", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
-      /// Value: Null data in api response
+      /// Value: Null data in api response or invalid data format
       static func null_data_in_response(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
           return NSLocalizedString("null_data_in_response", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
@@ -823,6 +900,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("null_data_in_response", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Please check ApiRequestResponse value on Debug console
+      static func failure_api_response(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("failure_api_response", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "failure_api_response"
+        }
+
+        return NSLocalizedString("failure_api_response", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
       /// Value: Please enter valid email & cannot be empty
@@ -851,6 +941,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("setting_problem", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
+      /// Value: Response data not parseable to string
+      static func data_not_parseable_to_string(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("data_not_parseable_to_string", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "data_not_parseable_to_string"
+        }
+
+        return NSLocalizedString("data_not_parseable_to_string", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
       /// Value: Restricted
       static func restricted(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -862,6 +965,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("restricted", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Seem you set requestParams.contentType = data, but you forgot to pass requestParams.requestModelData. Please make model data via using ParamsDataUtil.generateModelData(model) and then set into requestModelData.
+      static func null_request_param_data(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("null_request_param_data", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "null_request_param_data"
+        }
+
+        return NSLocalizedString("null_request_param_data", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
       /// Value: Something went wrong
@@ -981,17 +1097,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("update_interface_title", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
-      /// Value: We encountered a problem interpreting the response from the server. Support has been notified. Contact support for assistance if the problem continues.
-      static func parse_error_message(preferredLanguages: [String]? = nil) -> String {
+      /// Value: We encountered a problem interpreting the response from the server. Support has been notified. Contact support for assistance if the problem continues. Parse error is: %@
+      static func parse_error_message(_ value1: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("parse_error_message", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+          let format = NSLocalizedString("parse_error_message", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
         }
 
-        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+        guard let (locale, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
           return "parse_error_message"
         }
 
-        return NSLocalizedString("parse_error_message", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+        let format = NSLocalizedString("parse_error_message", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
       }
 
       /// Value: Yes
@@ -1020,6 +1138,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("yesterday", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
+      /// Value: You appear to have forgotten to specify authorizationTypeValue, please produce authorizationTypeValue using APIRequestAuthorizationType.value(type:.bearerToken). Then insert it into the request header.
+      static func null_authorization_value(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("null_authorization_value", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "null_authorization_value"
+        }
+
+        return NSLocalizedString("null_authorization_value", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
       /// Value: You must be logged in to access this
       static func must_be_logged_in_to_access_this(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -1031,6 +1162,34 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("must_be_logged_in_to_access_this", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: product info is: %@ and product price is: %@
+      static func in_app_purchase_product_info(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("in_app_purchase_product_info", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "in_app_purchase_product_info"
+        }
+
+        let format = NSLocalizedString("in_app_purchase_product_info", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
+      }
+
+      /// Value: unable to generate data from model
+      static func unable_to_generate_data_from_model(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("unable_to_generate_data_from_model", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "unable_to_generate_data_from_model"
+        }
+
+        return NSLocalizedString("unable_to_generate_data_from_model", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}
@@ -1072,12 +1231,40 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _ReceiverCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = ReceiverCell
+
+      let bundle = R.hostingBundle
+      let identifier = "ReceiverCell"
+      let name = "ReceiverCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ReceiverCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ReceiverCell
+      }
+
+      fileprivate init() {}
+    }
+
     struct _ScaleBarView: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "ScaleBarView"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _SenderCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = SenderCell
+
+      let bundle = R.hostingBundle
+      let identifier = "SenderCell"
+      let name = "SenderCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SenderCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SenderCell
       }
 
       fileprivate init() {}
@@ -1117,13 +1304,19 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = RxLoginVC
+      typealias InitialController = UIKit.UINavigationController
 
       let bundle = R.hostingBundle
+      let chatVC = StoryboardViewControllerResource<ChatVC>(identifier: "ChatVC")
       let employeesVC = StoryboardViewControllerResource<EmployeesVC>(identifier: "EmployeesVC")
       let loginVC = StoryboardViewControllerResource<LoginVC>(identifier: "LoginVC")
       let name = "Main"
+      let rxEmployeeVC = StoryboardViewControllerResource<RxEmployeeVC>(identifier: "RxEmployeeVC")
       let rxLoginVC = StoryboardViewControllerResource<RxLoginVC>(identifier: "RxLoginVC")
+
+      func chatVC(_: Void = ()) -> ChatVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: chatVC)
+      }
 
       func employeesVC(_: Void = ()) -> EmployeesVC? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: employeesVC)
@@ -1133,17 +1326,25 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: loginVC)
       }
 
+      func rxEmployeeVC(_: Void = ()) -> RxEmployeeVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: rxEmployeeVC)
+      }
+
       func rxLoginVC(_: Void = ()) -> RxLoginVC? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: rxLoginVC)
       }
 
       static func validate() throws {
         if UIKit.UIImage(named: "back2", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back2' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "profile", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'profile' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "Green", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Green' is used in storyboard 'Main', but couldn't be loaded.") }
           if UIKit.UIColor(named: "Grey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'Grey' is used in storyboard 'Main', but couldn't be loaded.") }
         }
+        if _R.storyboard.main().chatVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'chatVC' could not be loaded from storyboard 'Main' as 'ChatVC'.") }
         if _R.storyboard.main().employeesVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'employeesVC' could not be loaded from storyboard 'Main' as 'EmployeesVC'.") }
         if _R.storyboard.main().loginVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginVC' could not be loaded from storyboard 'Main' as 'LoginVC'.") }
+        if _R.storyboard.main().rxEmployeeVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'rxEmployeeVC' could not be loaded from storyboard 'Main' as 'RxEmployeeVC'.") }
         if _R.storyboard.main().rxLoginVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'rxLoginVC' could not be loaded from storyboard 'Main' as 'RxLoginVC'.") }
       }
 

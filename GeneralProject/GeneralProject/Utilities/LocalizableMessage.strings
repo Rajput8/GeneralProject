@@ -8,14 +8,20 @@
 
 //Remote Request Error Messages
 "unexpected_error" = "Unexpected error: if this problem continues, please contact support";
-"parse_error_message" = "We encountered a problem interpreting the response from the server. Support has been notified. Contact support for assistance if the problem continues.";
+"parse_error_message" = "We encountered a problem interpreting the response from the server. Support has been notified. Contact support for assistance if the problem continues. Parse error is: %@";
+"data_not_parseable_to_string" = "Response data not parseable to string";
 "server_err" = "The server encountered an error handling this request. Support has been notified.";
 "must_be_logged_in_to_access_this" = "You must be logged in to access this";
 "something_went_wrong" = "Something went wrong";
 "timed_out" = "The request timed out.!";
 "null_response" = "Null Response";
-"null_data_in_response" = "Null data in api response";
+"null_data_in_response" = "Null data in api response or invalid data format";
 "null_url" = "Null URL";
+"unable_to_generate_data_from_model" = "unable to generate data from model";
+"null_request_param_data" = "Seem you set requestParams.contentType = data, but you forgot to pass requestParams.requestModelData. Please make model data via using ParamsDataUtil.generateModelData(model) and then set into requestModelData.";
+"null_url_request" = "Either the given endpoint is invalid or please revalidate APIRequestURL.generateRequestURL(requestParams)";
+"null_authorization_value" = "You appear to have forgotten to specify authorizationTypeValue, please produce authorizationTypeValue using APIRequestAuthorizationType.value(type:.bearerToken). Then insert it into the request header.";
+"failure_api_response" = "Please check ApiRequestResponse value on Debug console";
 
 //Internet Connectivity Error Messages
 "connectivity_err" = "Something went wrong ! \n Please Check your internet Connection or Try again later.";
@@ -49,3 +55,4 @@
 "no" = "No";
 "no_further_information_available" = "No further information is available at this time";
 "update_interface_title" = "Update interface title";
+"in_app_purchase_product_info" = "product info is: %@ and product price is: %@";

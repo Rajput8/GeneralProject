@@ -24,9 +24,9 @@ class AuthorizationViewModel {
         credentials.password = password
     }
 
-    func credentialsInput() -> CredentialsInputStatus {
+    func credentialsInputStatus() -> CredentialsInputStatus {
         do {
-            _ = try ValidatorUtil(with: email, password: password)
+            _ = try Validator(with: email, password: password)
             setObservableValuesWhenCredentialsInputAreValid()
         } catch let error as ValidationError {
             if let errMessage = error.validationErrorData.errMessage {
@@ -59,5 +59,8 @@ class AuthorizationViewModel {
 
     func login() {
         self.errorMessage.value = "error.localizedDescription"
+        if let destVC = R.storyboard.main.rxEmployeeVC() {
+            HelperUtil.pushViewController(destVC)
+        }
     }
 }

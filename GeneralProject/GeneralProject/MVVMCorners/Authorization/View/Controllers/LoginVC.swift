@@ -11,7 +11,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var continueView: UIView!
 
     // MARK: - Stored Properties
-    fileprivate lazy var authorizationViewModel = { AuthorizationViewModel() }()
+    fileprivate lazy var viewModel = { AuthorizationViewModel() }()
 
     // MARK: Controller's Lifecycle
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class LoginVC: UIViewController {
 
     @IBAction func didTapContinue(_ sender: UIButton) {
         debugPrint("Call api or navigate to another controller")
-        authorizationViewModel.login()
+        viewModel.login()
     }
 
     // MARK: Helper's Method
@@ -55,32 +55,32 @@ class LoginVC: UIViewController {
         passwordTF.delegate = self
         emailTF.addTarget(self, action: #selector(textFieldEditingChanged(_ :)), for: .editingChanged)
         passwordTF.addTarget(self, action: #selector(textFieldEditingChanged(_ :)), for: .editingChanged)
-        bindData()
+        dataBindingHandler()
     }
 
     fileprivate func viewWillAppearSetup() { }
 
-    fileprivate func bindData() {
-        authorizationViewModel.credentialsInputErrorMessage.bind { [weak self] in
+    fileprivate func dataBindingHandler() {
+        viewModel.credentialsInputErrorMessage.bind { [weak self] in
             self?.authorizationErrorDescLbl.text = $0
         }
 
-        authorizationViewModel.isValidEnteredEmail.bind { [weak self] in
-            self?.validationErrorHandler(self?.emailView, $0)
+        viewModel.isValidEnteredEmail.bind { [weak self] in
+            self?.validationErrorIndicationHandler(self?.emailView, $0)
         }
 
-        authorizationViewModel.isValidEnteredPassword.bind { [weak self] in
-            self?.validationErrorHandler(self?.passwordView, $0)
+        viewModel.isValidEnteredPassword.bind { [weak self] in
+            self?.validationErrorIndicationHandler(self?.passwordView, $0)
         }
 
-        authorizationViewModel.errorMessage.bind {
+        viewModel.errorMessage.bind {
             guard let errorMessage = $0 else { return }
             debugPrint("errorMessage is: ", errorMessage)
             // Handle presenting of error message (e.g. UIAlertController)
         }
     }
 
-    fileprivate func validationErrorHandler(_ view: UIView?, _ isValid: Bool?) {
+    fileprivate func validationErrorIndicationHandler(_ view: UIView?, _ isValid: Bool?) {
         if let view, let isValid {
             if isValid {
                 view.borderColor = .label
@@ -94,9 +94,9 @@ class LoginVC: UIViewController {
         let email = emailTF.text?.trimmed()
         let pwd = passwordTF.text?.trimmed()
         // Here we ask viewModel to update model with existing credentials from text fields
-        authorizationViewModel.updateCredentials(email: email, password: pwd)
+        viewModel.updateCredentials(email: email, password: pwd)
         // Here we check user's credentials input - if it's correct we call login()
-        switch authorizationViewModel.credentialsInput() {
+        switch viewModel.credentialsInputStatus() {
         case .correct: continueView.alpha = 1.0
         case .incorrect: continueView.alpha = 0.5
         }

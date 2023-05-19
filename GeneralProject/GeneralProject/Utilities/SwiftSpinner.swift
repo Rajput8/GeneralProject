@@ -5,7 +5,7 @@ public class SwiftSpinner: UIView {
 
     // MARK: - Singleton
     // Access the singleton instance
-    public static let shared = SwiftSpinner(frame: CGRect.zero)
+    static let shared = SwiftSpinner(frame: CGRect.zero)
 
     // MARK: - Init
     /// - Parameter frame: the view's frame
@@ -110,7 +110,7 @@ public class SwiftSpinner: UIView {
     public class func useContainerView(_ spinnerView: UIView?) { customSuperview = spinnerView }
 
     /// Show the blurred background. If false the background content will be visible. Defaults to true.
-    public static var showBlurBackground: Bool = true
+    static var showBlurBackground: Bool = true
 
     /// Show the spinner activity on screen, if visible only update the title
     ///
@@ -210,7 +210,7 @@ public class SwiftSpinner: UIView {
     }
 
     /// If set to true, hiding a spinner causes scheduled spinners to be canceled
-    public static var hideCancelsScheduledSpinners = true
+    static var hideCancelsScheduledSpinners = true
 
     /// Hide the spinner
     ///
@@ -425,7 +425,7 @@ public class SwiftSpinner: UIView {
             containerView.bringSubviewToFront(SwiftSpinner.shared)
         }
     }
-
+    
     // MARK: - Util methods
     func delay(_ seconds: Double, completion: @escaping () -> Void) {
         let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)

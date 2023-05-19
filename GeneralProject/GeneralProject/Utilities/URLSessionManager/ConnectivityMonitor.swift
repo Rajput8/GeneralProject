@@ -38,7 +38,7 @@ extension Monitor {
         }
     }
 
-    public static func getCurrentConnectivityStatus(_ connection: Connection, reachable: Reachable) -> Reachable {
+    static func getCurrentConnectivityStatus(_ connection: Connection, _ reachable: Reachable) -> Reachable {
         return reachable
     }
 }

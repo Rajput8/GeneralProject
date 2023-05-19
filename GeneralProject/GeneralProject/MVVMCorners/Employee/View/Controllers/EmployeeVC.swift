@@ -12,7 +12,7 @@ class EmployeesVC: UIViewController {
     }
 
     // MARK: Variables
-    fileprivate lazy var employeeViewModel = { EmployeesViewModel() }()
+    fileprivate lazy var viewModel = { EmployeesViewModel() }()
     fileprivate var dataSource: DataSource<EmployeeCell, EmployeeData>?
 
     // MARK: Controller's Lifecycle
@@ -26,16 +26,16 @@ class EmployeesVC: UIViewController {
 
     // MARK: Helper's Method
     fileprivate func viewDidLoadSetup() {
-        bindData()
+        dataBindingHandler()
     }
 
     fileprivate func viewWillAppearSetup() { }
 
-    fileprivate func bindData() {
+    fileprivate func dataBindingHandler() {
         // Get employees data
-        employeeViewModel.getEmpDataAPI()
+        viewModel.getEmpDataAPI()
         // Reload TableView closure
-        employeeViewModel.employeesData.bind { _ in
+        viewModel.employeesData.bind { _ in
             // Implementation without using generic tableView datasource
             DispatchQueue.main.async { self.employeeTableView.reloadData() }
             // Implementation via using generic tableView datasource
@@ -46,8 +46,8 @@ class EmployeesVC: UIViewController {
     }
 
     fileprivate func updateDataSource(_ empData: [EmployeeData]) {
-        self.dataSource = DataSource(EmployeeCell.identifier, empData, { (cell, employeeData) in
-            cell.employeeData = employeeData
+        self.dataSource = DataSource(EmployeeCell.identifier, empData, { (cell, data) in
+            cell.data = data
         })
 
         DispatchQueue.main.async {
@@ -67,14 +67,14 @@ extension EmployeesVC: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension EmployeesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        employeeViewModel.numberOfRowsInSection()
+        viewModel.numberOfRowsInSection()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeCell.identifier,
                                                        for: indexPath) as? EmployeeCell else { fatalError("xib does not exists") }
-        let employeeData = employeeViewModel.cellForRowAt(at: indexPath)
-        cell.employeeData = employeeData
+        let employeeData = viewModel.cellForRowAt(at: indexPath)
+        cell.data = employeeData
         return cell
     }
 }

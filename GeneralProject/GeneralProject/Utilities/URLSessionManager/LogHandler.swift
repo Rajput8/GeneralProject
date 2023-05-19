@@ -2,25 +2,12 @@ import UIKit
 
 class LogHandler {
 
-    public static func responseLog(_ urlString: String, _ data: Data?, _ response: URLResponse?, _ err: Error?) {
-        if let err = err {  // this doesn't include 4xx and 5xx errors
-            debugPrint("error: \(err.localizedDescription); \(urlString)")
-            let errMessage = err.localizedDescription
-            SwiftSpinner.hide()
-            debugPrint("_RESPONSE_ _ERROR_ : %@ %@", urlString, errMessage)
-            return
-        }
-
-        guard let resp = response else {
-            SwiftSpinner.hide()
-            debugPrint("_RESPONSE_ _NULL_ Null response object for url : %@", urlString)
-            return
-        }
-
-        let responseDesc = "\(resp)"
+    static func responseLog(_ data: Data?, _ response: URLResponse?, _ err: Error?) {
+        guard let response, let data, err == nil else { return }
+        let responseDesc = "\(response)"
         _ = responseDesc.replacingOccurrences(of: "[\\s\n]+", with: " ", options: .regularExpression, range: nil)
-        if let respData = data {
-            if let JSONString = String(data: respData, encoding: String.Encoding.utf8) { print("JSONString \(JSONString)") }
+        if let requestResponse = String(data: data, encoding: .utf8) {
+            LogHandler.reportLogOnConsole(nil, "ApiRequestResponse is: \(requestResponse)")
         }
     }
 
@@ -31,7 +18,18 @@ class LogHandler {
         var requestBodyData = ""
         if let requestBodyData = request.httpBody { requestBodyString = String(decoding: requestBodyData, as: UTF8.self) }
         if let bodyData = data { requestBodyData = String(decoding: bodyData, as: UTF8.self) }
-        NSLog("\(request.httpMethod ?? "") \(request) _HEADERS_ \(String(describing: request.allHTTPHeaderFields)) _BODY_ \(requestBodyString)")
-        if !requestBodyData.isEmpty { debugPrint("_DATA_ \(requestBodyData)") }
+        if !requestBodyData.isEmpty { debugPrint("BodyData: \(requestBodyData)") }
+
+        LogHandler.reportLogOnConsole(nil, "Method: \(request.httpMethod ?? "") \(request)\nHeaders: \(String(describing: request.allHTTPHeaderFields))\nBody \(requestBodyString)")
+    }
+
+    static func reportLogOnConsole(_ errorType: APIFailureTypes?, _ desc: String) {
+    #if DEBUG
+        if let type = errorType {
+            Swift.print("errorType is: \(type) and description is: \(desc)")
+        } else {
+            Swift.print("Log is: \(desc)")
+        }
+    #endif
     }
 }

@@ -5,15 +5,15 @@ import CoreLocation
 class MapUtil {
 
     // MARK: Variables
-    public static var locationMarker: GMSMarker?
+    static var locationMarker: GMSMarker?
 
     // MARK: Delegate's Method
-    public static func googleMapSetUp(_ googleMapView: GMSMapView,
-                                      _ markerIcon: UIImage?,
-                                      _ scaleBarView: ScaleBarView? = nil,
-                                      _ lat: Double? = nil,
-                                      _ log: Double? = nil,
-                                      _ zoom: Float? = nil) {
+    static func googleMapSetUp(_ googleMapView: GMSMapView,
+                               _ markerIcon: UIImage?,
+                               _ scaleBarView: ScaleBarView? = nil,
+                               _ lat: Double? = nil,
+                               _ log: Double? = nil,
+                               _ zoom: Float? = nil) {
         googleMapView.isMyLocationEnabled = true
         googleMapView.settings.myLocationButton = true
         if let scaleBarView = scaleBarView { scaleBarView.mapView = googleMapView }
@@ -34,9 +34,9 @@ class MapUtil {
         }
     }
 
-    public static func reverseGeoCodeUsingGoogleMapAPI(_ lat: Double,
-                                                       _ log: Double,
-                                                       _ completion: @escaping (_ address: String?, _ error: String?) -> Void) {
+    static func reverseGeoCodeUsingGoogleMapAPI(_ lat: Double,
+                                                _ log: Double,
+                                                _ completion: @escaping (_ address: String?, _ error: String?) -> Void) {
         let coordinates = CLLocation(latitude: lat, longitude: log)
         let lat = coordinates.coordinate.latitude
         let log = coordinates.coordinate.longitude
@@ -59,7 +59,7 @@ class MapUtil {
         }).resume()
     }
 
-    public static func fetchRoute(_ mapView: GMSMapView, _ source: CLLocationCoordinate2D, _ destination: CLLocationCoordinate2D) {
+    static func fetchRoute(_ mapView: GMSMapView, _ source: CLLocationCoordinate2D, _ destination: CLLocationCoordinate2D) {
         let session = URLSession.shared
         let sourceLat = source.latitude
         let sourceLog = source.longitude
@@ -88,10 +88,10 @@ class MapUtil {
         task.resume()
     }
 
-    public static func drawPath(_ polyStr: String,
-                                _ mapView: GMSMapView,
-                                _ source: CLLocationCoordinate2D,
-                                _ destination: CLLocationCoordinate2D) {
+    static func drawPath(_ polyStr: String,
+                         _ mapView: GMSMapView,
+                         _ source: CLLocationCoordinate2D,
+                         _ destination: CLLocationCoordinate2D) {
         let path = GMSPath(fromEncodedPath: polyStr)
         let polyline = GMSPolyline(path: path)
         polyline.strokeColor = .systemBlue
@@ -103,7 +103,7 @@ class MapUtil {
         mapView.animate(toZoom: currentZoom - 1.4)
     }
 
-    public static func locationPermissionStatus(completionHandler: @escaping (_ status: LocationPermissionStatus) -> Void) {
+    static func locationPermissionStatus(completionHandler: @escaping (_ status: LocationPermissionStatus) -> Void) {
         if CLLocationManager.locationServicesEnabled() {
             switch AppConstants.locationManager.authorizationStatus {
             case .notDetermined: completionHandler(.notDetermined)
@@ -119,5 +119,5 @@ class MapUtil {
         }
     }
 
-    public static func showMarkerIndicator() { }
+    static func showMarkerIndicator() { }
 }

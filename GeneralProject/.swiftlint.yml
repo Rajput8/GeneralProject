@@ -25,7 +25,7 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
     - Pods
     - AppFolder\ App/Class/*
     - R.generated.swift
-    - SwiftSpinner.swift
+    - /Users/michealkloster/Documents/MichealCatalogue/GitGeneralProject/generalproject/GeneralProject/GeneralProject/Utilities/SwiftSpinner.swift
     # - AppFolder\ App/ViewController/* //Enabled for this
 
 analyzer_rules: # Rules run by `swiftlint analyze` (experimental)
@@ -84,4 +84,3 @@ identifier_name:
 
 
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown)
-

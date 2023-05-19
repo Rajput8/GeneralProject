@@ -3,9 +3,9 @@ import GoogleMaps
 
 class LiveMapView {
 
-    public static var googleMapView: GMSMapView?
+    static var googleMapView: GMSMapView?
 
-    public static func googleMapViewOptionsHandler(_ tagValue: Int, _ isSelectedStatus: Bool?, _ iconView: UIImageView? = nil) {
+    static func googleMapViewOptionsHandler(_ tagValue: Int, _ isSelectedStatus: Bool?, _ iconView: UIImageView? = nil) {
         if tagValue == GoogleMapViewOptions.traffic.rawValue {
             if isSelectedStatus == true {
                 googleMapView?.isTrafficEnabled = true

@@ -41,3 +41,11 @@ extension UIApplication {
             .first(where: \.isKeyWindow)
     }
 }
+
+extension UINavigationController {
+    func popToViewController(ofClass: AnyClass, animated: Bool = true) {
+        if let destVC = viewControllers.last(where: { $0.isKind(of: ofClass) }) {
+            popToViewController(destVC, animated: animated)
+        }
+    }
+}

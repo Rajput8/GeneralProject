@@ -1,10 +1,3 @@
-//
-//  GeneralProjectTests.swift
-//  GeneralProjectTests
-//
-//  Created by Micheal Kloster on 06/12/22.
-//
-
 import XCTest
 @testable import GeneralProject
 

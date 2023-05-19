@@ -80,7 +80,7 @@ class KeychainItem {
         // Encode the password into an Data object.
         if let encodedPassword = password.data(using: String.Encoding.utf8) {
             // Check for an existing item in the keychain.
-            if let _ = readItem() {
+            if let item = readItem(), !item.isEmpty {
                 // Update the existing item with the new password.
                 var query = KeychainItem.keychainQuery(accessGroup: accessGroup,
                                                        secClass: secClass,
@@ -146,20 +146,20 @@ class KeychainItem {
     private static func performedQueryStatus(_ status: OSStatus) -> KeychainError {
         // Check the return status and throw an error if appropriate.
         if status == errSecSuccess {
-            print("success")
+            LogHandler.reportLogOnConsole(nil, "success")
             return KeychainError.noError
         } else {
-            print("fail, something went wrong")
+            LogHandler.reportLogOnConsole(nil, "fail, something went wrong")
             return KeychainError.error
         }
     }
 
-    public static func getAllKeyChainItemsOfClass(_ secClass: String) -> [String: String] {
+    static func getAllKeyChainItemsOfClass(_ secClass: String) -> [String: String] {
         let query: [String: Any] = [
             kSecClass as String: secClass,
-            kSecReturnData as String: kCFBooleanTrue,
-            kSecReturnAttributes as String: kCFBooleanTrue,
-            kSecReturnRef as String: kCFBooleanTrue,
+            kSecReturnData as String: kCFBooleanTrue ?? true,
+            kSecReturnAttributes as String: kCFBooleanTrue ?? true,
+            kSecReturnRef as String: kCFBooleanTrue ?? true,
             kSecMatchLimit as String: kSecMatchLimitAll
             // kSecAttrAccessGroup as String : KeychainItem.bundleIdentifier
         ]
@@ -172,18 +172,21 @@ class KeychainItem {
         var values = [String: String]()
 
         if lastResultCode == noErr {
-            let array = result as? Array<Dictionary<String, Any>>
-            for item in array! {
-                if let key = item[kSecAttrAccount as String] as? String,
-                   let value = item[kSecValueData as String] as? Data {
-                    values[key] = String(data: value, encoding: .utf8)
+            //  let array = result as? Array<Dictionary<String, Any>>
+            if let arr = result as? NSArray {
+                for itemDict in arr {
+                    if let item = itemDict as? NSDictionary,
+                       let key = item[kSecAttrAccount as String] as? String,
+                       let value = item[kSecValueData as String] as? Data {
+                        values[key] = String(data: value, encoding: .utf8)
+                    }
                 }
             }
         }
         return values
     }
 
-    public static func wipeOutStoredCredential() {
+    static func wipeOutStoredCredential() {
         let secItemClasses = [kSecClassGenericPassword,
                               kSecClassInternetPassword,
                               kSecClassCertificate,
@@ -195,29 +198,29 @@ class KeychainItem {
         }
     }
 
-    public static func appUserDefaults() -> UserDefaults? {
+    static func appUserDefaults() -> UserDefaults? {
         if let sharedDefaults = UserDefaults.init(suiteName: "group.CTZ.app") {
             return sharedDefaults
         }
         return nil
     }
 
-    public static func getDataFromPacket(packet: [PasswordDetails]) -> Data? {
+    static func getDataFromPacket(packet: [PasswordDetails]) -> Data? {
         do {
             let data = try PropertyListEncoder.init().encode(packet)
             return data
         } catch let error as NSError {
-            print(error.localizedDescription)
+            LogHandler.reportLogOnConsole(nil, error.localizedDescription)
         }
         return nil
     }
 
-    public static func getPacketFromData(data: Data) -> [PasswordDetails]? {
+    static func getPacketFromData(data: Data) -> [PasswordDetails]? {
         do {
             let packet = try PropertyListDecoder.init().decode([PasswordDetails].self, from: data)
             return packet
         } catch let error as NSError {
-            print(error.localizedDescription)
+            LogHandler.reportLogOnConsole(nil, error.localizedDescription)
         }
 
         return nil
