@@ -48,4 +48,8 @@ extension UINavigationController {
             popToViewController(destVC, animated: animated)
         }
     }
+
+    @objc override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
