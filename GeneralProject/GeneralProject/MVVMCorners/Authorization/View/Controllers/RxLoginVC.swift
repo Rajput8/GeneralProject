@@ -34,25 +34,17 @@ class RxLoginVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func didTapAppleSignUp(_ sender: UIButton) {
-        SocialPlatformAuthorizationUtil.appleAuthorization(self, self, self)
-    }
+    @IBAction func didTapAppleSignUp(_ sender: UIButton) { }
 
-    @IBAction func didTapFacebookSignUp(_ sender: UIButton) {
-        SocialPlatformAuthorizationUtil.facebookAuthorization(self)
-    }
+    @IBAction func didTapFacebookSignUp(_ sender: UIButton) { }
 
-    @IBAction func didTapGoogleSignUp(_ sender: UIButton) {
-        SocialPlatformAuthorizationUtil.googleAuthorization(self)
-    }
+    @IBAction func didTapGoogleSignUp(_ sender: UIButton) { }
 
     @IBAction func didTapContinue(_ sender: UIButton) {
         viewModel.login()
     }
 
-    @IBAction func didTapInAppPurchase(_ sender: Any) {
-        viewModel.performInAppPurchase()
-    }
+    @IBAction func didTapInAppPurchase(_ sender: Any) { }
 
     // MARK: Helper's Method
     fileprivate func viewDidLoadSetup() {

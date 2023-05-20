@@ -82,11 +82,6 @@ class RxAuthorizationViewModel {
             }
         }
     }
-
-    func performInAppPurchase() {
-        IAPUtil.manager.purchaseProduct(0)
-        IAPUtil.manager.performActionAccordingToTransactionState()
-    }
 }
 
 struct UserLogin: Codable {
