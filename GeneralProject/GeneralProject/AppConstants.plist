@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>App_Name</key>
-        <string>CRIYP</string>
-        <key>App_Environment</key>
-        <dict>
-            <key>Local</key>
-            <false/>
-            <key>QATesting</key>
-            <false/>
-            <key>BetaTesting</key>
-            <false/>
-            <key>Development</key>
-            <false/>
-            <key>Production</key>
-            <true/>
-        </dict>
-        <key>Google_Services_Api_Key</key>
-        <string>AIzaSyD5Jt2e9ocVmXovnsOsdmtdhPRkP8m9IhQ</string>
-        <key>Development_Base_URL</key>
-        <string>https://app.development.omatochi.com/</string>
-        <key>Production_Base_URL</key>
-        <string>https://app.omatochi.com/</string>
-        <key>Media_Load_Base_URL</key>
-        <string>https://app.omatochi.com/</string>
-    </dict>
+<dict>
+	<key>App_Name</key>
+	<string>GeneralProject</string>
+	<key>App_Environment</key>
+	<dict>
+		<key>Local</key>
+		<false/>
+		<key>QATesting</key>
+		<false/>
+		<key>BetaTesting</key>
+		<false/>
+		<key>Development</key>
+		<false/>
+		<key>Production</key>
+		<true/>
+	</dict>
+	<key>Google_Services_Api_Key</key>
+	<string></string>
+	<key>Development_Base_URL</key>
+	<string></string>
+	<key>Production_Base_URL</key>
+	<string></string>
+	<key>Media_Load_Base_URL</key>
+	<string></string>
+</dict>
 </plist>

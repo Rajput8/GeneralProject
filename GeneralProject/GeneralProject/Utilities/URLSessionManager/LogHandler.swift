@@ -31,5 +31,5 @@ class LogHandler {
             Swift.print("Log is: \(desc)")
         }
     #endif
-    } 
+    }
 }

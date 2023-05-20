@@ -30,7 +30,6 @@
 		3D0CA3FF29530F2D0034B5D0 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CA3F329530F2C0034B5D0 /* DateExt.swift */; };
 		3D0CA40829530F340034B5D0 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CA40229530F340034B5D0 /* AppAppearance.swift */; };
 		3D0CA40929530F340034B5D0 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CA40329530F340034B5D0 /* AppConfigurations.swift */; };
-		3D0CA40A29530F340034B5D0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CA40429530F340034B5D0 /* AppConstants.swift */; };
 		3D0CA40B29530F340034B5D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CA40529530F340034B5D0 /* AppDelegate.swift */; };
 		3D0CA40C29530F340034B5D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CA40629530F340034B5D0 /* SceneDelegate.swift */; };
 		3D0CA4382953125E0034B5D0 /* ScaleBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CA41F2953125E0034B5D0 /* ScaleBarView.swift */; };
@@ -173,7 +172,6 @@
 		3D0CA3F329530F2C0034B5D0 /* DateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		3D0CA40229530F340034B5D0 /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		3D0CA40329530F340034B5D0 /* AppConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
-		3D0CA40429530F340034B5D0 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		3D0CA40529530F340034B5D0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D0CA40629530F340034B5D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3D0CA41F2953125E0034B5D0 /* ScaleBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleBarView.swift; sourceTree = "<group>"; };
@@ -406,7 +404,6 @@
 			children = (
 				3D0CA40229530F340034B5D0 /* AppAppearance.swift */,
 				3D0CA40329530F340034B5D0 /* AppConfigurations.swift */,
-				3D0CA40429530F340034B5D0 /* AppConstants.swift */,
 				3D0CA40529530F340034B5D0 /* AppDelegate.swift */,
 				3D0CA40629530F340034B5D0 /* SceneDelegate.swift */,
 				3DF9784B2A0FA35100A36E1A /* AppEnvironment.swift */,
@@ -1104,7 +1101,6 @@
 				3D2F2A6F293F7D860022C0CB /* ValidationErrorHandler.swift in Sources */,
 				3DF9784A2A0FA20400A36E1A /* R.generated.swift in Sources */,
 				3D2F2A6C293F7D860022C0CB /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
-				3D0CA40A29530F340034B5D0 /* AppConstants.swift in Sources */,
 				3D0CBFF5296540C700A6BC07 /* MiscExt.swift in Sources */,
 				3D2F2A7B293F7D860022C0CB /* APIResourcesExt.swift in Sources */,
 				3D0415AD29D319570039E6F1 /* ChatResponse.swift in Sources */,

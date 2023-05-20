@@ -34,7 +34,7 @@ enum Environment: CaseIterable {
         }
         return nil
     }
-    
+
     static func currentEnvironment() -> Environment {
         guard let settedMode = alreadySettedEnvironment() else { return .unspecified }
         for environment in Environment.allCases where environment.mode == settedMode { return environment }

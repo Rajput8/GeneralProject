@@ -61,4 +61,3 @@ extension UIImage {
         return UIImage()
     }
 }
-

@@ -40,7 +40,7 @@ class MapUtil {
         let coordinates = CLLocation(latitude: lat, longitude: log)
         let lat = coordinates.coordinate.latitude
         let log = coordinates.coordinate.longitude
-        let link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(log)&key=\(AppConstants.googleServicesAPIKey)"
+        let link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(log)&key=\(AppConfiguration.manager.googleServicesApiKey)"
         guard let url = URL(string: link) else { return }
         URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
             guard let dataResult = data else { return }
@@ -66,7 +66,7 @@ class MapUtil {
         let destLat = destination.latitude
         let destLog = destination.longitude
 
-        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(sourceLat),\(sourceLog)&destination=\(destLat),\(destLog)&sensor=false&mode=driving&key=\(AppConstants.googleServicesAPIKey)")!
+        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(sourceLat),\(sourceLog)&destination=\(destLat),\(destLog)&sensor=false&mode=driving&key=\(AppConfiguration.manager.googleServicesApiKey)")!
 
         let task = session.dataTask(with: url, completionHandler: { (data, _, error) in
             guard error == nil else {
@@ -105,7 +105,7 @@ class MapUtil {
 
     static func locationPermissionStatus(completionHandler: @escaping (_ status: LocationPermissionStatus) -> Void) {
         if CLLocationManager.locationServicesEnabled() {
-            switch AppConstants.locationManager.authorizationStatus {
+            switch AppConfiguration.manager.locationManager?.authorizationStatus {
             case .notDetermined: completionHandler(.notDetermined)
             case .restricted: completionHandler(.restricted)
             case .denied: completionHandler(.denied)
