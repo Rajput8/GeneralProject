@@ -18,4 +18,3 @@ final class AppConfiguration {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
     }
 }
-
