@@ -56,7 +56,6 @@
 		3D2F2A6E293F7D860022C0CB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A4D293F7D860022C0CB /* Validator.swift */; };
 		3D2F2A6F293F7D860022C0CB /* ValidationErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A4E293F7D860022C0CB /* ValidationErrorHandler.swift */; };
 		3D2F2A70293F7D860022C0CB /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A4F293F7D860022C0CB /* DateUtil.swift */; };
-		3D2F2A71293F7D860022C0CB /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A50293F7D860022C0CB /* SwiftSpinner.swift */; };
 		3D2F2A72293F7D860022C0CB /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A51293F7D860022C0CB /* Enums.swift */; };
 		3D2F2A73293F7D860022C0CB /* KeyboardStateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A53293F7D860022C0CB /* KeyboardStateListener.swift */; };
 		3D2F2A74293F7D860022C0CB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A54293F7D860022C0CB /* Toast.swift */; };
@@ -75,6 +74,7 @@
 		3D2F2A85293F7D860022C0CB /* HelperUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A66293F7D860022C0CB /* HelperUtil.swift */; };
 		3D2F2A86293F7D860022C0CB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A67293F7D860022C0CB /* Extension.swift */; };
 		3D2F2A89293F7D860022C0CB /* OpenWebPageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A6A293F7D860022C0CB /* OpenWebPageUtil.swift */; };
+		3D50735C2A18E932001D04CF /* LoaderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D50735B2A18E932001D04CF /* LoaderUtil.swift */; };
 		3D7BBF952976D5DF007D92BF /* ObservableUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7BBF942976D5DF007D92BF /* ObservableUtil.swift */; };
 		3D99424329FD2498006BB988 /* Keyname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D99424229FD2498006BB988 /* Keyname.swift */; };
 		3D99424529FD25C2006BB988 /* StoredKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D99424429FD25C2006BB988 /* StoredKeys.swift */; };
@@ -164,7 +164,6 @@
 		3D2F2A4D293F7D860022C0CB /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		3D2F2A4E293F7D860022C0CB /* ValidationErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorHandler.swift; sourceTree = "<group>"; };
 		3D2F2A4F293F7D860022C0CB /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
-		3D2F2A50293F7D860022C0CB /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		3D2F2A51293F7D860022C0CB /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3D2F2A53293F7D860022C0CB /* KeyboardStateListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardStateListener.swift; sourceTree = "<group>"; };
 		3D2F2A54293F7D860022C0CB /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -183,6 +182,7 @@
 		3D2F2A66293F7D860022C0CB /* HelperUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperUtil.swift; sourceTree = "<group>"; };
 		3D2F2A67293F7D860022C0CB /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		3D2F2A6A293F7D860022C0CB /* OpenWebPageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWebPageUtil.swift; sourceTree = "<group>"; };
+		3D50735B2A18E932001D04CF /* LoaderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderUtil.swift; sourceTree = "<group>"; };
 		3D7BBF862976B88B007D92BF /* FBSDKLoginKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBSDKLoginKit.xcframework; path = Pods/FBSDKLoginKit/XCFrameworks/FBSDKLoginKit.xcframework; sourceTree = "<group>"; };
 		3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBSDKCoreKit.xcframework; path = Pods/FBSDKCoreKit/XCFrameworks/FBSDKCoreKit.xcframework; sourceTree = "<group>"; };
 		3D7BBF942976D5DF007D92BF /* ObservableUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableUtil.swift; sourceTree = "<group>"; };
@@ -429,12 +429,12 @@
 				3D2F2A4F293F7D860022C0CB /* DateUtil.swift */,
 				3D2F2A51293F7D860022C0CB /* Enums.swift */,
 				3D2F2A66293F7D860022C0CB /* HelperUtil.swift */,
+				3D50735B2A18E932001D04CF /* LoaderUtil.swift */,
 				3D7BBF942976D5DF007D92BF /* ObservableUtil.swift */,
 				3D2F2A6A293F7D860022C0CB /* OpenWebPageUtil.swift */,
 				3D0D0E18298E41B100AD09E6 /* PopupUtil.swift */,
 				3D2F2A65293F7D860022C0CB /* Protocols.swift */,
 				3D19EE6229711B070078B603 /* Snippets.swift */,
-				3D2F2A50293F7D860022C0CB /* SwiftSpinner.swift */,
 				3D0CA3E729530F2C0034B5D0 /* Extensions */,
 				3DC6611829B5C81C00022710 /* Socket.io */,
 				3D0D0E28298E6A8500AD09E6 /* TableViewUtil */,
@@ -836,10 +836,10 @@
 				3D2F2A84293F7D860022C0CB /* Protocols.swift in Sources */,
 				3D0D0E19298E41B100AD09E6 /* PopupUtil.swift in Sources */,
 				3DC6611A29B5C83A00022710 /* SocketUtil.swift in Sources */,
-				3D2F2A71293F7D860022C0CB /* SwiftSpinner.swift in Sources */,
 				3D2F2A73293F7D860022C0CB /* KeyboardStateListener.swift in Sources */,
 				3D2F2A17293F7BA60022C0CB /* ViewController.swift in Sources */,
 				3D0CA3F829530F2D0034B5D0 /* TableViewExt.swift in Sources */,
+				3D50735C2A18E932001D04CF /* LoaderUtil.swift in Sources */,
 				3D2F2A75293F7D860022C0CB /* URLRequest.swift in Sources */,
 				3D0D0E21298E46E600AD09E6 /* APIEndpoints.swift in Sources */,
 				3D0D0E25298E477900AD09E6 /* APIRequestTypes.swift in Sources */,
