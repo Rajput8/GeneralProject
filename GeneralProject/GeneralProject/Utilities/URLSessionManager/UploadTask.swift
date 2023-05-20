@@ -10,12 +10,12 @@ final class SessionUploadTask {
         let boundary = UUID().uuidString
 
         guard let request = SessionURLRequest.urlRequest(remoteRequestParams, boundary) else {
-            SwiftSpinner.hide()
+            LoaderUtil.hideLoading()
             completion(.failure(.invalidRequest)) // "unexpected_error".localized()
             return
         }
 
-        SwiftSpinner.show("Please wait", animated: true)
+        LoaderUtil.showLoading()
         LogHandler.requestLog(request)
         Monitor().startMonitoring { [ ] connection, reachable in
             let reachableStatus = Monitor.getCurrentConnectivityStatus(connection, reachable)
@@ -25,14 +25,14 @@ final class SessionUploadTask {
                 let task = session.uploadTask(with: request, from: data, completionHandler: { data, response, err in
                     LogHandler.responseLog(data, response, err)
                     APIResponse.responseHandler(data, response, err, completion)
-                    SwiftSpinner.hide()
+                    LoaderUtil.hideLoading()
                 })
                 APIConstants.observation = task.progress.observe(\.fractionCompleted) { progress, _ in
                     LogHandler.reportLogOnConsole(nil, "progress: \(progress.fractionCompleted)")
                 }
                 task.resume()
             } else {
-                SwiftSpinner.hide()
+                LoaderUtil.hideLoading()
                 APIRequestResources.remoteErrorAlert("no_internet_connection".localized(),
                                                      "device_connected_with_internet_warning".localized())
             }

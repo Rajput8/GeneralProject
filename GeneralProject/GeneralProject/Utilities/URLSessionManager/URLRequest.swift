@@ -26,7 +26,7 @@ class SessionURLRequest {
         }
 
         // TODOs: remove below line when use this project in production environment. ☺️
-        if let url = URL(string: APIResourcesForTesting.login) { apiRequestURL = url }
+        if let url = URL(string: APIResourcesForTesting.employee) { apiRequestURL = url }
 
         var request = URLRequest.init(url: apiRequestURL)
 

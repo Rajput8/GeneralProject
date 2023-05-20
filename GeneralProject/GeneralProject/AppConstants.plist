@@ -22,7 +22,7 @@
 	<key>Development_Base_URL</key>
 	<string></string>
 	<key>Production_Base_URL</key>
-	<string></string>
+	<string>http://dummy.restapiexample.com/api/v1/employees</string>
 	<key>Media_Load_Base_URL</key>
 	<string></string>
 </dict>

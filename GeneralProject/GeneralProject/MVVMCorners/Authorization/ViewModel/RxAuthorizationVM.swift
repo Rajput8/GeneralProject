@@ -28,7 +28,7 @@ class RxAuthorizationViewModel {
             do {
                 self.validatedData = try Validator(with: email, password: password, username: username)
                 self.setBehaviorRelayValuesWhenCredentialsInputAreValid()
-                self.login()
+                // self.login()
             } catch let error as ValidationError {
                 if let errMessage = error.validationErrorData.errMessage {
                     self.credentialsInputErrorMessage.onNext(errMessage)
@@ -77,8 +77,10 @@ class RxAuthorizationViewModel {
         let modelData = ParamsDataUtil.generateModelData(authorizationRequestModel)
         let requestParams = APIRequestParams(.login, .post, .data, modelData)
         SessionDataTask.dataTask(type: UserLogin.self, requestParams) { _ in
-            if let destVC = R.storyboard.main.rxEmployeeVC() {
-                HelperUtil.pushViewController(destVC)
+            DispatchQueue.main.async {
+                if let destVC = R.storyboard.main.rxEmployeeVC() {
+                    HelperUtil.pushViewController(destVC)
+                }
             }
         }
     }

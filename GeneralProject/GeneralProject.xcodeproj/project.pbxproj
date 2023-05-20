@@ -63,7 +63,6 @@
 		3D2F2A6E293F7D860022C0CB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A4D293F7D860022C0CB /* Validator.swift */; };
 		3D2F2A6F293F7D860022C0CB /* ValidationErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A4E293F7D860022C0CB /* ValidationErrorHandler.swift */; };
 		3D2F2A70293F7D860022C0CB /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A4F293F7D860022C0CB /* DateUtil.swift */; };
-		3D2F2A71293F7D860022C0CB /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A50293F7D860022C0CB /* SwiftSpinner.swift */; };
 		3D2F2A72293F7D860022C0CB /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A51293F7D860022C0CB /* Enums.swift */; };
 		3D2F2A73293F7D860022C0CB /* KeyboardStateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A53293F7D860022C0CB /* KeyboardStateListener.swift */; };
 		3D2F2A74293F7D860022C0CB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A54293F7D860022C0CB /* Toast.swift */; };
@@ -83,6 +82,7 @@
 		3D2F2A86293F7D860022C0CB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A67293F7D860022C0CB /* Extension.swift */; };
 		3D2F2A87293F7D860022C0CB /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A68293F7D860022C0CB /* MapUtil.swift */; };
 		3D2F2A89293F7D860022C0CB /* OpenWebPageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A6A293F7D860022C0CB /* OpenWebPageUtil.swift */; };
+		3D5073522A18D2E8001D04CF /* LoaderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5073512A18D2E8001D04CF /* LoaderUtil.swift */; };
 		3D7BBF8E2976B967007D92BF /* FBSDKCoreKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */; };
 		3D7BBF8F2976B967007D92BF /* FBSDKCoreKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D7BBF932976CAB8007D92BF /* AuthorizationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7BBF922976CAB8007D92BF /* AuthorizationVM.swift */; };
@@ -211,7 +211,6 @@
 		3D2F2A4D293F7D860022C0CB /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		3D2F2A4E293F7D860022C0CB /* ValidationErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorHandler.swift; sourceTree = "<group>"; };
 		3D2F2A4F293F7D860022C0CB /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
-		3D2F2A50293F7D860022C0CB /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		3D2F2A51293F7D860022C0CB /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3D2F2A53293F7D860022C0CB /* KeyboardStateListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardStateListener.swift; sourceTree = "<group>"; };
 		3D2F2A54293F7D860022C0CB /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -231,6 +230,7 @@
 		3D2F2A67293F7D860022C0CB /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		3D2F2A68293F7D860022C0CB /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUtil.swift; sourceTree = "<group>"; };
 		3D2F2A6A293F7D860022C0CB /* OpenWebPageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWebPageUtil.swift; sourceTree = "<group>"; };
+		3D5073512A18D2E8001D04CF /* LoaderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderUtil.swift; sourceTree = "<group>"; };
 		3D7BBF862976B88B007D92BF /* FBSDKLoginKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBSDKLoginKit.xcframework; path = Pods/FBSDKLoginKit/XCFrameworks/FBSDKLoginKit.xcframework; sourceTree = "<group>"; };
 		3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBSDKCoreKit.xcframework; path = Pods/FBSDKCoreKit/XCFrameworks/FBSDKCoreKit.xcframework; sourceTree = "<group>"; };
 		3D7BBF922976CAB8007D92BF /* AuthorizationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVM.swift; sourceTree = "<group>"; };
@@ -540,12 +540,12 @@
 				3D2F2A4F293F7D860022C0CB /* DateUtil.swift */,
 				3D2F2A51293F7D860022C0CB /* Enums.swift */,
 				3D2F2A66293F7D860022C0CB /* HelperUtil.swift */,
+				3D5073512A18D2E8001D04CF /* LoaderUtil.swift */,
 				3D7BBF942976D5DF007D92BF /* ObservableUtil.swift */,
 				3D2F2A6A293F7D860022C0CB /* OpenWebPageUtil.swift */,
 				3D0D0E18298E41B100AD09E6 /* PopupUtil.swift */,
 				3D2F2A65293F7D860022C0CB /* Protocols.swift */,
 				3D19EE6229711B070078B603 /* Snippets.swift */,
-				3D2F2A50293F7D860022C0CB /* SwiftSpinner.swift */,
 				3D0CA3E729530F2C0034B5D0 /* Extensions */,
 				3D0CA44F295312910034B5D0 /* GoogleMap */,
 				3D9432C12A06508500AC11ED /* InAppPurchase */,
@@ -604,8 +604,8 @@
 				3D2F2A64293F7D860022C0CB /* APIResponse.swift */,
 				3D2F2A5E293F7D860022C0CB /* ConnectivityMonitor.swift */,
 				3D2F2A62293F7D860022C0CB /* DataTask.swift */,
-				3D2F2A60293F7D860022C0CB /* ParamsDataUtil.swift */,
 				3D2F2A58293F7D860022C0CB /* LogHandler.swift */,
+				3D2F2A60293F7D860022C0CB /* ParamsDataUtil.swift */,
 				3D2F2A59293F7D860022C0CB /* UploadTask.swift */,
 				3D2F2A56293F7D860022C0CB /* URLRequest.swift */,
 			);
@@ -1115,7 +1115,6 @@
 				3D0D0E19298E41B100AD09E6 /* PopupUtil.swift in Sources */,
 				3DF0F63C2976A153002AB674 /* KeychainItem.swift in Sources */,
 				3DC6611A29B5C83A00022710 /* SocketUtil.swift in Sources */,
-				3D2F2A71293F7D860022C0CB /* SwiftSpinner.swift in Sources */,
 				3D2F2A73293F7D860022C0CB /* KeyboardStateListener.swift in Sources */,
 				3D2F2A17293F7BA60022C0CB /* ViewController.swift in Sources */,
 				3D0CA3F829530F2D0034B5D0 /* TableViewExt.swift in Sources */,
@@ -1126,6 +1125,7 @@
 				3D2F2A7F293F7D860022C0CB /* ParamsDataUtil.swift in Sources */,
 				3D0CA40929530F340034B5D0 /* AppConfigurations.swift in Sources */,
 				3DF0F63529769C93002AB674 /* LoginVC.swift in Sources */,
+				3D5073522A18D2E8001D04CF /* LoaderUtil.swift in Sources */,
 				3D2F2A7D293F7D860022C0CB /* ConnectivityMonitor.swift in Sources */,
 				3DF0F6452976AE3E002AB674 /* EmployeeCell.swift in Sources */,
 				3D2F2A89293F7D860022C0CB /* OpenWebPageUtil.swift in Sources */,

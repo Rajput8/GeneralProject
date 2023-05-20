@@ -464,7 +464,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizableMessage` struct is generated, and contains static references to 62 localization keys.
+    /// This `R.string.localizableMessage` struct is generated, and contains static references to 64 localization keys.
     struct localizableMessage {
       /// Value: %@ and %@ is not matched.
       static let password_not_matched = Rswift.StringResource(key: "password_not_matched", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -534,6 +534,8 @@ struct R: Rswift.Validatable {
       static let email_err = Rswift.StringResource(key: "email_err", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Please try again, for the same please goes into settings.
       static let setting_problem = Rswift.StringResource(key: "setting_problem", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Production Environment - Except Case 0/21007 in 200: status is: %@
+      static let default_production_case = Rswift.StringResource(key: "default_production_case", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Purchased
       static let purchased = Rswift.StringResource(key: "purchased", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Purchases are disabled in your device.
@@ -550,6 +552,8 @@ struct R: Rswift.Validatable {
       static let restored = Rswift.StringResource(key: "restored", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Restricted
       static let restricted = Rswift.StringResource(key: "restricted", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Sandbox Environment - Except Case 0 in 200: status is: %@
+      static let default_sandbox_case = Rswift.StringResource(key: "default_sandbox_case", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Seem you set requestParams.contentType = data, but you forgot to pass requestParams.requestModelData. Please make model data via using ParamsDataUtil.generateModelData(model) and then set into requestModelData.
       static let null_request_param_data = Rswift.StringResource(key: "null_request_param_data", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Something went wrong
@@ -1053,6 +1057,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("setting_problem", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
+      /// Value: Production Environment - Except Case 0/21007 in 200: status is: %@
+      static func default_production_case(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("default_production_case", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "default_production_case"
+        }
+
+        let format = NSLocalizedString("default_production_case", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
       /// Value: Purchased
       static func purchased(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -1155,6 +1174,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("restricted", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Sandbox Environment - Except Case 0 in 200: status is: %@
+      static func default_sandbox_case(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("default_sandbox_case", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "default_sandbox_case"
+        }
+
+        let format = NSLocalizedString("default_sandbox_case", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
       }
 
       /// Value: Seem you set requestParams.contentType = data, but you forgot to pass requestParams.requestModelData. Please make model data via using ParamsDataUtil.generateModelData(model) and then set into requestModelData.
