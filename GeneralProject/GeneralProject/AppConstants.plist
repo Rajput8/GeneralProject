@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>App_Name</key>
-	<string>CRIYP</string>
+	<string>GeneralProject</string>
 	<key>App_Environment</key>
 	<dict>
 		<key>Local</key>
@@ -20,10 +20,10 @@
 	<key>Google_Services_Api_Key</key>
 	<string></string>
 	<key>Development_Base_URL</key>
-	<string>https://app.development.omatochi.com/</string>
+	<string></string>
 	<key>Production_Base_URL</key>
-	<string>https://app.omatochi.com/</string>
+	<string></string>
 	<key>Media_Load_Base_URL</key>
-	<string>https://app.omatochi.com/</string>
+	<string></string>
 </dict>
 </plist>
