@@ -59,8 +59,5 @@ class AuthorizationViewModel {
 
     func login() {
         self.errorMessage.value = "error.localizedDescription"
-        if let destVC = R.storyboard.main.rxEmployeeVC() {
-            HelperUtil.pushViewController(destVC)
-        }
     }
 }

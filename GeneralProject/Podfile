@@ -6,14 +6,8 @@ target 'GeneralProject' do
   use_frameworks!
 
   # Pods for GeneralProject
-  pod 'GoogleMaps'
   pod 'R.swift'
   pod 'SwiftLint'
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'FBSDKLoginKit'
-  pod 'GoogleSignIn'
-  pod 'Socket.IO-Client-Swift'
 
   target 'GeneralProjectTests' do
     inherit! :search_paths
