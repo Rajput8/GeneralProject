@@ -76,11 +76,7 @@ class RxAuthorizationViewModel {
                                                                   deviceToken: "123")
         let modelData = ParamsDataUtil.generateModelData(authorizationRequestModel)
         let requestParams = APIRequestParams(.login, .post, .data, modelData)
-        SessionDataTask.dataTask(type: UserLogin.self, requestParams) { _ in
-            if let destVC = R.storyboard.main.rxEmployeeVC() {
-                HelperUtil.pushViewController(destVC)
-            }
-        }
+        SessionDataTask.dataTask(type: UserLogin.self, requestParams) { _ in }
     }
 
     func performInAppPurchase() {
