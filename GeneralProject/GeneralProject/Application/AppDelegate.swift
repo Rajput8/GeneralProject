@@ -13,8 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeyboardStateListener.shared.start()
         AppAppearance.setupAppearance()
         AppConfiguration.disableAutolayoutErrorWarning()
-        // MARK: - Fetching Registered In-App Purchase products
-        IAPUtil.manager.getRegisteredProducts(.yearlySubscription)
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }

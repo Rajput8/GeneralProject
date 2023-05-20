@@ -13,7 +13,6 @@ target 'GeneralProject' do
   pod 'RxCocoa'
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
-  pod 'Socket.IO-Client-Swift'
 
   target 'GeneralProjectTests' do
     inherit! :search_paths

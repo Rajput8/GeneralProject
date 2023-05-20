@@ -50,9 +50,7 @@ class RxLoginVC: UIViewController {
         viewModel.login()
     }
 
-    @IBAction func didTapInAppPurchase(_ sender: Any) {
-        viewModel.performInAppPurchase()
-    }
+    @IBAction func didTapInAppPurchase(_ sender: Any) { }
 
     // MARK: Helper's Method
     fileprivate func viewDidLoadSetup() {
