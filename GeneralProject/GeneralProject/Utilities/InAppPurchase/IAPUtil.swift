@@ -52,16 +52,16 @@ class IAPUtil: NSObject {
             let price = numberFormatter.string(from: product.price) ?? "00"
             let productDetail = String(format: "in_app_purchase_product_info".localized(),
                                        arguments: [product.localizedDescription, price])
-            LogHandler.reportLogOnConsole(nil, "productDetail is: \(productDetail)")
+            LogHandler.reportLogOnConsole(nil, productDetail)
         }
     }
 
     func performActionAccordingToTransactionState() {
         currentTransactionState = { state in
             switch state {
-            case .purchased: LogHandler.reportLogOnConsole(nil, "purchased")
+            case .purchased: LogHandler.reportLogOnConsole(nil, "purchased".localized())
                 ReceiptUtil.getReceiptDetails(type: InAppPurchaseReceiptResponse.self) { response in
-                    LogHandler.reportLogOnConsole(nil, "Receipt Details")
+                    LogHandler.reportLogOnConsole(nil, "receipt_details".localized())
                     switch response {
                     case .success(let receiptDetails):
                         guard let latestReceiptInfo = receiptDetails.latestReceiptInfo.first else {
@@ -73,9 +73,9 @@ class IAPUtil: NSObject {
                     }
                 }
 
-            case .restored: LogHandler.reportLogOnConsole(nil, "restored")
+            case .restored: LogHandler.reportLogOnConsole(nil, "restored".localized())
 
-            case .failed: LogHandler.reportLogOnConsole(nil, "failed")
+            case .failed: LogHandler.reportLogOnConsole(nil, "failed".localized())
 
             default: break
             }
@@ -97,17 +97,17 @@ extension IAPUtil: SKProductsRequestDelegate, SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for updatedTransaction in transactions {
             switch updatedTransaction.transactionState {
-            case .purchasing: LogHandler.reportLogOnConsole(nil, "purchasing")
+            case .purchasing: LogHandler.reportLogOnConsole(nil, "purchasing".localized())
 
-            case .purchased: LogHandler.reportLogOnConsole(nil, "purchased")
+            case .purchased: LogHandler.reportLogOnConsole(nil, "purchased".localized())
                 SKPaymentQueue.default().finishTransaction(updatedTransaction)
                 currentTransactionState?(.purchased)
 
-            case .restored: LogHandler.reportLogOnConsole(nil, "restored")
+            case .restored: LogHandler.reportLogOnConsole(nil, "restored".localized())
                 SKPaymentQueue.default().finishTransaction(updatedTransaction)
                 currentTransactionState?(.restored)
 
-            case .failed: LogHandler.reportLogOnConsole(nil, "failed")
+            case .failed: LogHandler.reportLogOnConsole(nil, "failed".localized())
                 SKPaymentQueue.default().finishTransaction(updatedTransaction)
                 currentTransactionState?(.failed)
 
@@ -124,11 +124,11 @@ extension IAPUtil: SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
     func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
         // Hide your loader - Enable interactions here
-        LogHandler.reportLogOnConsole(nil, "removedTransactions")
+        LogHandler.reportLogOnConsole(nil, "removed_transactions".localized())
     }
 
     func requestDidFinish(_ request: SKRequest) { }
-
+    
     func request(_ request: SKRequest, didFailWithError error: Error) {
         LogHandler.reportLogOnConsole(nil, "didFailWithError is: \(error.localizedDescription)")
     }

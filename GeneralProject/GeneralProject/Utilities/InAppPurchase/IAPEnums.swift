@@ -9,11 +9,11 @@ enum TransactionState {
 
     var message: String {
         switch self {
-        case .disabled: return "Purchases are disabled in your device!"
-        case .restored: return "You've successfully restored your purchase!"
-        case .purchased: return "You've successfully bought this purchase!"
-        case .failed: return "Transactions failed"
-        case .emptyProducts: return "No registered products"
+        case .disabled: return "disable_purchase_in_device".localized()
+        case .restored: return "restored_purchase".localized()
+        case .purchased: return "bought_purchase".localized()
+        case .failed: return "transactions_failed".localized()
+        case .emptyProducts: return "empty_products".localized()
         }
     }
 }
@@ -24,8 +24,8 @@ enum ProductTypes: String {
 
     var productIdentifier: String {
         switch self {
-        case .yearlySubscription: return "com.Rafaeli.VisionBoard.YearlySubscription"
-        case .monthlySubscription: return "com.Rafaeli.VisionBoard.YearlySubscription"
+        case .yearlySubscription: return "com.general.project.YearlySubscription"
+        case .monthlySubscription: return "com.general.project.MonthlySubscription"
         }
     }
 }

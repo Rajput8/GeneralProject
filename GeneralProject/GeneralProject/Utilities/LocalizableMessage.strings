@@ -55,4 +55,23 @@
 "no" = "No";
 "no_further_information_available" = "No further information is available at this time";
 "update_interface_title" = "Update interface title";
+"failed" = "Failed";
+
+//In-App Purchase
+"disable_purchase_in_device" = "Purchases are disabled in your device.";
+"restored_purchase" = "You've successfully restored your purchase.";
+"bought_purchase" = "You've successfully bought this purchase";
+"transactions_failed" = "Transactions failed.";
+"empty_products" = "No registered products.";
+"purchased" = "Purchased";
+"receipt_details" = "Receipt Details";
+"restored" = "Restored";
+"purchasing" = "Purchasing";
+"removed_transactions" = "Removed Transactions";
 "in_app_purchase_product_info" = "product info is: %@ and product price is: %@";
+"failed_serialized_json" = "Failed to cast serialized JSON to Dictionary<String, AnyObject>";
+"failed_url_conversion" = "Couldn't convert string into URL. Check for special characters.";
+"failed_create_json" = "Couldn't create JSON and error is: %@";
+"failed_transactions" = "Failed: statusCode is: %@ and error is: %@";
+"default_sandbox_case" = "Sandbox Environment - Except Case 0 in 200: status is: %@";
+"default_production_case" = "Production Environment - Except Case 0/21007 in 200: status is: %@";

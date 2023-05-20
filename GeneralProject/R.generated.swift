@@ -464,7 +464,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizableMessage` struct is generated, and contains static references to 47 localization keys.
+    /// This `R.string.localizableMessage` struct is generated, and contains static references to 62 localization keys.
     struct localizableMessage {
       /// Value: %@ and %@ is not matched.
       static let password_not_matched = Rswift.StringResource(key: "password_not_matched", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -480,6 +480,10 @@ struct R: Rswift.Validatable {
       static let allow = Rswift.StringResource(key: "allow", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Allow when in use
       static let allow_when_in_Use = Rswift.StringResource(key: "allow_when_in_ use", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Couldn't convert string into URL. Check for special characters.
+      static let failed_url_conversion = Rswift.StringResource(key: "failed_url_conversion", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Couldn't create JSON and error is: %@
+      static let failed_create_json = Rswift.StringResource(key: "failed_create_json", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Dismiss
       static let dismiss = Rswift.StringResource(key: "dismiss", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Do you want to logout?
@@ -488,6 +492,12 @@ struct R: Rswift.Validatable {
       static let null_url_request = Rswift.StringResource(key: "null_url_request", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Empty %@
       static let empty_err_msg = Rswift.StringResource(key: "empty_err_msg", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Failed
+      static let failed = Rswift.StringResource(key: "failed", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Failed to cast serialized JSON to Dictionary<String, AnyObject>
+      static let failed_serialized_json = Rswift.StringResource(key: "failed_serialized_json", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Failed: statusCode is: %@ and error is: %@
+      static let failed_transactions = Rswift.StringResource(key: "failed_transactions", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: From date should be less than To date
       static let error_date_range_selection = Rswift.StringResource(key: "error_date_range_selection", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Invalid %@ format
@@ -506,6 +516,8 @@ struct R: Rswift.Validatable {
       static let no_internet_connection = Rswift.StringResource(key: "no_internet_connection", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: No further information is available at this time
       static let no_further_information_available = Rswift.StringResource(key: "no_further_information_available", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: No registered products.
+      static let empty_products = Rswift.StringResource(key: "empty_products", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Not Allow
       static let not_allow = Rswift.StringResource(key: "not_allow", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Not Determined
@@ -522,8 +534,20 @@ struct R: Rswift.Validatable {
       static let email_err = Rswift.StringResource(key: "email_err", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Please try again, for the same please goes into settings.
       static let setting_problem = Rswift.StringResource(key: "setting_problem", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Purchased
+      static let purchased = Rswift.StringResource(key: "purchased", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Purchases are disabled in your device.
+      static let disable_purchase_in_device = Rswift.StringResource(key: "disable_purchase_in_device", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Purchasing
+      static let purchasing = Rswift.StringResource(key: "purchasing", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Receipt Details
+      static let receipt_details = Rswift.StringResource(key: "receipt_details", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Removed Transactions
+      static let removed_transactions = Rswift.StringResource(key: "removed_transactions", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Response data not parseable to string
       static let data_not_parseable_to_string = Rswift.StringResource(key: "data_not_parseable_to_string", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Restored
+      static let restored = Rswift.StringResource(key: "restored", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Restricted
       static let restricted = Rswift.StringResource(key: "restricted", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Seem you set requestParams.contentType = data, but you forgot to pass requestParams.requestModelData. Please make model data via using ParamsDataUtil.generateModelData(model) and then set into requestModelData.
@@ -542,6 +566,8 @@ struct R: Rswift.Validatable {
       static let time = Rswift.StringResource(key: "time", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Today
       static let today = Rswift.StringResource(key: "today", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Transactions failed.
+      static let transactions_failed = Rswift.StringResource(key: "transactions_failed", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Unexpected error: if this problem continues, please contact support
       static let unexpected_error = Rswift.StringResource(key: "unexpected_error", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Update interface title
@@ -556,6 +582,10 @@ struct R: Rswift.Validatable {
       static let null_authorization_value = Rswift.StringResource(key: "null_authorization_value", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: You must be logged in to access this
       static let must_be_logged_in_to_access_this = Rswift.StringResource(key: "must_be_logged_in_to_access_this", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: You've successfully bought this purchase
+      static let bought_purchase = Rswift.StringResource(key: "bought_purchase", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: You've successfully restored your purchase.
+      static let restored_purchase = Rswift.StringResource(key: "restored_purchase", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: product info is: %@ and product price is: %@
       static let in_app_purchase_product_info = Rswift.StringResource(key: "in_app_purchase_product_info", tableName: "LocalizableMessage", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: unable to generate data from model
@@ -662,6 +692,34 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("allow_when_in_ use", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
+      /// Value: Couldn't convert string into URL. Check for special characters.
+      static func failed_url_conversion(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("failed_url_conversion", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "failed_url_conversion"
+        }
+
+        return NSLocalizedString("failed_url_conversion", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Couldn't create JSON and error is: %@
+      static func failed_create_json(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("failed_create_json", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "failed_create_json"
+        }
+
+        let format = NSLocalizedString("failed_create_json", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
       /// Value: Dismiss
       static func dismiss(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -714,6 +772,47 @@ struct R: Rswift.Validatable {
 
         let format = NSLocalizedString("empty_err_msg", tableName: "LocalizableMessage", bundle: bundle, comment: "")
         return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: Failed
+      static func failed(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("failed", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "failed"
+        }
+
+        return NSLocalizedString("failed", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Failed to cast serialized JSON to Dictionary<String, AnyObject>
+      static func failed_serialized_json(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("failed_serialized_json", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "failed_serialized_json"
+        }
+
+        return NSLocalizedString("failed_serialized_json", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Failed: statusCode is: %@ and error is: %@
+      static func failed_transactions(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("failed_transactions", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "failed_transactions"
+        }
+
+        let format = NSLocalizedString("failed_transactions", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
       }
 
       /// Value: From date should be less than To date
@@ -837,6 +936,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("no_further_information_available", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
+      /// Value: No registered products.
+      static func empty_products(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("empty_products", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "empty_products"
+        }
+
+        return NSLocalizedString("empty_products", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
       /// Value: Not Allow
       static func not_allow(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -941,6 +1053,71 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("setting_problem", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
+      /// Value: Purchased
+      static func purchased(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("purchased", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "purchased"
+        }
+
+        return NSLocalizedString("purchased", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Purchases are disabled in your device.
+      static func disable_purchase_in_device(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("disable_purchase_in_device", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "disable_purchase_in_device"
+        }
+
+        return NSLocalizedString("disable_purchase_in_device", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Purchasing
+      static func purchasing(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("purchasing", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "purchasing"
+        }
+
+        return NSLocalizedString("purchasing", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Receipt Details
+      static func receipt_details(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("receipt_details", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "receipt_details"
+        }
+
+        return NSLocalizedString("receipt_details", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Removed Transactions
+      static func removed_transactions(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("removed_transactions", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "removed_transactions"
+        }
+
+        return NSLocalizedString("removed_transactions", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
       /// Value: Response data not parseable to string
       static func data_not_parseable_to_string(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -952,6 +1129,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("data_not_parseable_to_string", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: Restored
+      static func restored(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("restored", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "restored"
+        }
+
+        return NSLocalizedString("restored", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
       /// Value: Restricted
@@ -1071,6 +1261,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("today", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
+      /// Value: Transactions failed.
+      static func transactions_failed(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("transactions_failed", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "transactions_failed"
+        }
+
+        return NSLocalizedString("transactions_failed", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
       /// Value: Unexpected error: if this problem continues, please contact support
       static func unexpected_error(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -1162,6 +1365,32 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("must_be_logged_in_to_access_this", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: You've successfully bought this purchase
+      static func bought_purchase(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("bought_purchase", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "bought_purchase"
+        }
+
+        return NSLocalizedString("bought_purchase", tableName: "LocalizableMessage", bundle: bundle, comment: "")
+      }
+
+      /// Value: You've successfully restored your purchase.
+      static func restored_purchase(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("restored_purchase", tableName: "LocalizableMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LocalizableMessage", preferredLanguages: preferredLanguages) else {
+          return "restored_purchase"
+        }
+
+        return NSLocalizedString("restored_purchase", tableName: "LocalizableMessage", bundle: bundle, comment: "")
       }
 
       /// Value: product info is: %@ and product price is: %@

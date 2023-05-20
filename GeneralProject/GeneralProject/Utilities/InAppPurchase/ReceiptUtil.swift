@@ -3,7 +3,7 @@ import Foundation
 class ReceiptUtil {
 
     typealias ReceiptResponseHandler<T: Decodable> = (Result<T, ReceiptRequestError>) -> Void
-    fileprivate static var subscriptionAccountSecretKey = "6eab246bd2d149c9b983a6cf94f117a8"
+    fileprivate static var subscriptionAccountSecretKey = ""
     fileprivate static var appStoreURL = "https://buy.itunes.apple.com/verifyReceipt"
     fileprivate static var sandboxURL = "https://sandbox.itunes.apple.com/verifyReceipt"
 
@@ -83,40 +83,49 @@ class ReceiptUtil {
                                                         }
 
                                                     default:
-                                                        completion(.failure(.errorMessage("Sandbox Environment - Except Case 0 in 200: status is: \(status)")))
+                                                        let errMsg = String(format: "default_sandbox_case".localized(), ["\(status)"])
+                                                        completion(.failure(.errorMessage(errMsg)))
                                                     }
                                                 } else {
-                                                    completion(.failure(.errorMessage("Failed to cast serialized JSON to Dictionary<String, AnyObject>")))
+                                                    completion(.failure(.errorMessage("failed_serialized_json".localized())))
                                                 }
                                             } catch {
-                                                completion(.failure(.errorMessage("Couldn't create JSON with error: " + error.localizedDescription)))
+                                                let errMsg = String(format: "failed_create_json".localized(), [error.localizedDescription])
+                                                completion(.failure(.errorMessage(errMsg)))
                                             }
                                         } else {
-                                            completion(.failure(.errorMessage("^Failed: statusCode is: \(httpResponse?.statusCode ?? 500) and error is: \(error?.localizedDescription ?? "500")")))
+                                            let statusCode = "\(httpResponse?.statusCode ?? 500)"
+                                            let errorDesc = error?.localizedDescription
+                                            let errMsg = String(format: "failed_transactions".localized(), [statusCode, errorDesc])
                                         }
                                     }
                                     // END of closure #2 = verification with Sandbox
                                     task.resume()
                                 default:
-                                    completion(.failure(.errorMessage("Production Environment - Except Case 0/21007 in 200: status is: \(status)")))
+                                    let errMsg = String(format: "default_production_case".localized(), ["\(status)"])
+                                    completion(.failure(.errorMessage(errMsg)))
                                 }
                             } else {
-                                completion(.failure(.errorMessage("Failed to cast serialized JSON to Dictionary<String, AnyObject>")))
+                                completion(.failure(.errorMessage("failed_serialized_json".localized())))
                             }
                         } catch {
-                            completion(.failure(.errorMessage("Couldn't create JSON with error: " + error.localizedDescription)))
+                            let errMsg = String(format: "failed_create_json".localized(), [error.localizedDescription])
+                            completion(.failure(.errorMessage(errMsg)))
                         }
                     } else {
-                        completion(.failure(.errorMessage("^Failed: statusCode is: \(httpResponse?.statusCode ?? 500) and error is: \(error?.localizedDescription ?? "500")")))
+                        let statusCode = "\(httpResponse?.statusCode ?? 500)"
+                        let errorDesc = error?.localizedDescription
+                        let errMsg = String(format: "failed_transactions".localized(), [statusCode, errorDesc])
                     }
                 }
                 // END of closure #1 - verification with Production
                 task.resume()
             } else {
-                completion(.failure(.errorMessage("Couldn't convert string into URL. Check for special characters.")))
+                completion(.failure(.errorMessage("failed_url_conversion".localized())))
             }
         } catch {
-            completion(.failure(.errorMessage("Couldn't create JSON with error: " + error.localizedDescription)))
+            let errMsg = String(format: "failed_create_json".localized(), [error.localizedDescription])
+            completion(.failure(.errorMessage(errMsg)))
         }
     }
 
