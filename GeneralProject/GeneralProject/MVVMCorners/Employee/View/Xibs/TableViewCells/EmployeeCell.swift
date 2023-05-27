@@ -18,6 +18,16 @@ class EmployeeCell: UITableViewCell {
         }
     }
 
+    var productData: Product? {
+        didSet {
+            empIdLbl.text = productData?.name ?? "Product name not available"
+            let location = productData?.location ?? "Product location not available"
+            let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: location)
+            attributedString.setColorFontForText(["Block", "Row", "Shelf"], [.black, .orange, .yellow])
+            empNameLbl.attributedText = attributedString
+        }
+    }
+
     // MARK: Controller's Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()

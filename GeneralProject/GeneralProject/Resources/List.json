@@ -1,0 +1,29 @@
+{
+    "data": {
+        "name": "Walmart Brampton Plaza",
+        "email": "rajputshiv8@gmail.com",
+        "categories": [
+            {
+                "name": "Bakery",
+                "products": [
+                    {
+                        "name": "Cake",
+                        "location": "Block B › Row 2 › Shelf 1",
+                    },{
+                        "name": "Snacks",
+                        "location": "Block B › Row 2 › Shelf 1",
+                    }
+                ]
+            },{
+                "name": "Vegetables",
+                "products": [
+                    {
+                        "name": "Frozen Vegetable",
+                        "location": "Block B › Row 2 › Shelf 1",
+                    }
+                ]
+            }
+        ]
+    }
+}
+

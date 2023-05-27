@@ -11,6 +11,7 @@ target 'GeneralProject' do
   pod 'SwiftLint'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxDataSources'
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
   pod 'Socket.IO-Client-Swift'

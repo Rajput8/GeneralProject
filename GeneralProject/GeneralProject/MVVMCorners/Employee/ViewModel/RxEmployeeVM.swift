@@ -6,6 +6,7 @@ import RxRelay
 class RxEmployeeViewModel {
 
     var employeesData = BehaviorRelay<[EmployeeData]>(value: [])
+    var categoriesListData = BehaviorRelay<[Category]>(value: [])
     var isRequestHasErr = BehaviorRelay<Bool>(value: false)
     var requestErrMessage = BehaviorRelay<String?>(value: nil)
     var disposeBag = DisposeBag()
@@ -27,6 +28,12 @@ class RxEmployeeViewModel {
                 self.requestErrMessage.accept(error.localizedDescription)
             }
         }
+    }
+
+    func getListFromJson() {
+        guard let listData = HelperUtil.loadDataFromJson(),
+              let categoriesData = listData.data?.categories else { return }
+        self.categoriesListData.accept(categoriesData)
     }
 
     func uploadMediaContent() {

@@ -20,6 +20,20 @@ extension String {
     }
 }
 
+extension NSMutableAttributedString {
+
+    func setColorFontForText(_ textForAttribute: [String], _ color: [UIColor]) {
+        for (index, content) in textForAttribute.enumerated() {
+            var textColor = UIColor.black
+            if index < color.count { textColor = color[index] }
+            let range: NSRange = self.mutableString.range(of: content, options: .caseInsensitive)
+            let attributes = [NSAttributedString.Key.foregroundColor: textColor,
+                              NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+            self.addAttributes(attributes, range: range)
+        }
+    }
+}
+
 enum LocalizableFiles {
     case generalPurpose
     var filename: String {

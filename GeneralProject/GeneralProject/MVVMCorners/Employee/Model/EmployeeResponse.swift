@@ -1,7 +1,8 @@
 import Foundation
+import RxDataSources
 
 // MARK: - EmployeeResponse
-struct EmployeeResponse: Decodable {
+struct EmployeeResponse: Codable {
     let status: String?
     let data: [EmployeeData]?
 }
@@ -23,3 +24,39 @@ struct EmployeeData: Codable {
 }
 
 // typealias EmployeeModel = [EmployeeData]
+
+// MARK: - ListResponse
+struct ListResponse: Codable {
+    let data: ListData?
+}
+
+// MARK: - ListData
+struct ListData: Codable {
+    let name: String?
+    let email: String?
+    let categories: [Category]?
+}
+
+// MARK: - Category
+struct Category: Codable {
+    let name: String?
+    var products: [Product]?
+}
+
+// MARK: - Product
+struct Product: Codable {
+    let name: String?
+    let location: String?
+}
+
+extension Category: SectionModelType {
+    var items: [Product] {
+        return products ?? []
+    }
+
+    typealias Items = [Product]
+    init(original: Category, items: Items) {
+        self = original
+        self.products = items
+    }
+}

@@ -51,4 +51,14 @@ class HelperUtil {
             }
         }
     }
+
+    static func loadDataFromJson() -> ListResponse? {
+        let decoder = JSONDecoder()
+        guard
+            let url = Bundle.main.url(forResource: "List", withExtension: "json"),
+            let data = try? Data(contentsOf: url),
+            let data = try? decoder.decode(ListResponse.self, from: data)
+        else { return nil }
+        return data
+    }
 }

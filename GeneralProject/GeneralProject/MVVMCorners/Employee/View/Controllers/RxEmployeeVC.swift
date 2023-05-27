@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class RxEmployeeVC: UIViewController {
 
@@ -39,12 +40,13 @@ class RxEmployeeVC: UIViewController {
         // Implement Number of Rows
         // Implement Cell For Row
         // All these are taken care of in the reactive paradigm
+
         viewModel.employeesData.bind(to: employeeTableView.rx.items(cellIdentifier: EmployeeCell.identifier,
                                                                     cellType: EmployeeCell.self)) { _, data, cell in
             cell.data = data
         }.disposed(by: disposeBag)
 
-        //        rxEmployeeViewModel.errorMessage.drive(onNext: { (errMsg) in
+        //        viewModel.errorMessage.drive(onNext: { (errMsg) in
         //            if let errMsg {
         //                Toast.show(message: errMsg, controller: self)
         //            }
@@ -57,3 +59,7 @@ class RxEmployeeVC: UIViewController {
         }.disposed(by: disposeBag)
     }
 }
+
+// MARK: - UITableViewDelegate
+
+// MARK: - UITableViewDataSource

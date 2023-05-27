@@ -147,7 +147,7 @@ class RxLoginVC: UIViewController {
             }
         }
     }
-
+    
     fileprivate func validateCredentialsInput4() {
         _ = viewModel.credentialsInputStatus.bind(onNext: { credentialsInputStatus in
             switch credentialsInputStatus {
