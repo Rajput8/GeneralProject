@@ -20,7 +20,7 @@ class LogHandler {
         var requestBodyData = ""
         if let requestBodyData = request.httpBody { requestBodyString = String(decoding: requestBodyData, as: UTF8.self) }
         if let bodyData = data { requestBodyData = String(decoding: bodyData, as: UTF8.self) }
-        if !requestBodyData.isEmpty { debugPrint("BodyData: \(requestBodyData)") }
+        if !requestBodyData.isEmpty { LogHandler.shared.reportLogOnConsole(nil, "BodyData: \(requestBodyData)") }
 
         LogHandler.shared.reportLogOnConsole(nil, "Method: \(request.httpMethod ?? "") \(request)\nHeaders: \(String(describing: request.allHTTPHeaderFields))\nBody \(requestBodyString)")
     }

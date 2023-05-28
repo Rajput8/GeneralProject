@@ -16,7 +16,7 @@ extension UIWindow {
         }
         return top
     }
-    
+
     static var key: UIWindow? {
         if #available(iOS 13, *) {
             return UIApplication.shared.keyWindow
@@ -27,7 +27,7 @@ extension UIWindow {
 }
 
 extension UIApplication {
-    
+
     var keyWindow: UIWindow? {
         // Note: .filter { $0.activationState == .foregroundActive } and .first(where: \.isKeyWindow) -
         // these lines  commented because the window was not properly fetched.
@@ -50,7 +50,7 @@ extension UINavigationController {
             popToViewController(destVC, animated: animated)
         }
     }
-    
+
     @objc override open var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

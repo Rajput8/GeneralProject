@@ -15,6 +15,7 @@ target 'GeneralProject' do
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
   pod 'Socket.IO-Client-Swift'
+  pod 'Swifter', :git => "https://github.com/mattdonnelly/Swifter.git"
 
   target 'GeneralProjectTests' do
     inherit! :search_paths

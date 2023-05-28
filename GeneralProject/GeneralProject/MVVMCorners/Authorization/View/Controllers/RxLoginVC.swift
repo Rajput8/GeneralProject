@@ -35,15 +35,15 @@ class RxLoginVC: UIViewController {
     }
 
     @IBAction func didTapAppleSignUp(_ sender: UIButton) {
-        // SocialPlatformAuthorizationUtil.appleAuthorization(self, self, self)
+        self.appleAuthorization()
     }
 
     @IBAction func didTapFacebookSignUp(_ sender: UIButton) {
-        // SocialPlatformAuthorizationUtil.facebookAuthorization(self)
+        self.facebookAuthorization()
     }
 
     @IBAction func didTapGoogleSignUp(_ sender: UIButton) {
-        // SocialPlatformAuthorizationUtil.googleAuthorization(self)
+       // self.googleAuthorization()
     }
 
     @IBAction func didTapContinue(_ sender: UIButton) {

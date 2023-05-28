@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>App_Name</key>
-	<string>GeneralProject</string>
-	<key>App_Environment</key>
-	<dict>
-		<key>Local</key>
-		<false/>
-		<key>QATesting</key>
-		<false/>
-		<key>BetaTesting</key>
-		<false/>
-		<key>Development</key>
-		<false/>
-		<key>Production</key>
-		<true/>
-	</dict>
-	<key>Google_Services_Api_Key</key>
-	<string></string>
-	<key>Development_Base_URL</key>
-	<string></string>
-	<key>Production_Base_URL</key>
-	<string>http://dummy.restapiexample.com/api/v1/employees</string>
-	<key>Media_Load_Base_URL</key>
-	<string></string>
-</dict>
+    <dict>
+        <key>App_Name</key>
+        <string>GeneralProject</string>
+        <key>App_Environment</key>
+        <dict>
+            <key>Local</key>
+            <false/>
+            <key>QATesting</key>
+            <false/>
+            <key>BetaTesting</key>
+            <false/>
+            <key>Development</key>
+            <false/>
+            <key>Production</key>
+            <true/>
+        </dict>
+        <key>App_Store_ID</key>
+        <string></string>
+        <key>Google_Services_Api_Key</key>
+        <string></string>
+        <key>Twitter_Consumer_Key</key>
+        <string>G4nL6elGKk51OusRmEjHajnXo</string>
+        <key>Twitter_Consumer_Secret_Key</key>
+        <string>MMGfyI0gjNbIOwUtWVwGmoLK4ls0BhwUjz7WXAgwwC1pBne93E</string>
+        <key>Twitter_Callback_URL</key>
+        <string>oemage://</string>
+        <key>Development_Base_URL</key>
+        <string></string>
+        <key>Production_Base_URL</key>
+        <string>http://dummy.restapiexample.com/api/v1/employees</string>
+        <key>Media_Load_Base_URL</key>
+        <string></string>
+    </dict>
 </plist>

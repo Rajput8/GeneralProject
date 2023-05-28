@@ -31,19 +31,18 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func didTapAppleSignUp(_ sender: UIButton) {
-        // SocialPlatformAuthorizationUtil.appleAuthorization(self, self, self)
+        self.appleAuthorization()
     }
 
     @IBAction func didTapFacebookSignUp(_ sender: UIButton) {
-        // SocialPlatformAuthorizationUtil.facebookAuthorization(self)
+        self.facebookAuthorization()
     }
 
     @IBAction func didTapGoogleSignUp(_ sender: UIButton) {
-        // SocialPlatformAuthorizationUtil.googleAuthorization(self)
+        self.googleAuthorization()
     }
 
     @IBAction func didTapContinue(_ sender: UIButton) {
-        debugPrint("Call api or navigate to another controller")
         viewModel.login()
     }
 
@@ -75,8 +74,8 @@ class LoginVC: UIViewController {
 
         viewModel.errorMessage.bind {
             guard let errorMessage = $0 else { return }
-            debugPrint("errorMessage is: ", errorMessage)
             // Handle presenting of error message (e.g. UIAlertController)
+            Toast.show(message: errorMessage, controller: self)
         }
     }
 

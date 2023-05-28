@@ -56,7 +56,7 @@ class MapUtil {
                     }
                 }
             } catch {
-                debugPrint(error.localizedDescription)
+                LogHandler.shared.reportLogOnConsole(nil, error.localizedDescription)
             }
         }).resume()
     }
@@ -71,11 +71,7 @@ class MapUtil {
         let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(sourceLat),\(sourceLog)&destination=\(destLat),\(destLog)&sensor=false&mode=driving&key=\(AppConfiguration.shared.googleServicesApiKey)")!
 
         let task = session.dataTask(with: url, completionHandler: { (data, _, error) in
-            guard error == nil else {
-                debugPrint(error!.localizedDescription)
-                return
-            }
-
+            guard error == nil else { LogHandler.shared.reportLogOnConsole(nil, error?.localizedDescription ?? ""); return }
             let jsonResult = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
             let jsonResponse = jsonResult
             guard let routes = jsonResponse?["routes"] as? [Any] else { return }
@@ -116,7 +112,7 @@ class MapUtil {
             default: break
             }
         } else {
-            debugPrint("Location services are not enabled")
+            LogHandler.shared.reportLogOnConsole(nil, "Location services are not enabled")
             completionHandler(.error)
         }
     }

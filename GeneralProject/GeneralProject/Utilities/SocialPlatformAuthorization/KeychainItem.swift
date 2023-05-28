@@ -91,7 +91,7 @@ class KeychainItem {
                 attributesToUpdate[kSecValueData as String] = encodedPassword as AnyObject?
                 query[kSecValueData as String] = encodedPassword as AnyObject?
                 let status = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
-                debugPrint(KeychainItem.performedQueryStatus(status))
+                LogHandler.shared.reportLogOnConsole(nil, "\(KeychainItem.performedQueryStatus(status))")
             } else {
                 var query = KeychainItem.keychainQuery(accessGroup: accessGroup,
                                                        secClass: secClass,
@@ -102,7 +102,7 @@ class KeychainItem {
                 query[kSecValueData as String] = encodedPassword as AnyObject?
                 // Add a the new item to the keychain.
                 let status = SecItemAdd(query as CFDictionary, nil)
-                debugPrint(KeychainItem.performedQueryStatus(status))
+                LogHandler.shared.reportLogOnConsole(nil, "\(KeychainItem.performedQueryStatus(status))")
             }
         }
     }
@@ -115,7 +115,7 @@ class KeychainItem {
                                                server: server,
                                                keyChainOperation: .delete)
         let status = SecItemDelete(query as CFDictionary)
-        debugPrint(KeychainItem.performedQueryStatus(status))
+        LogHandler.shared.reportLogOnConsole(nil, "\(KeychainItem.performedQueryStatus(status))")
     }
 
     // MARK: Convenience
