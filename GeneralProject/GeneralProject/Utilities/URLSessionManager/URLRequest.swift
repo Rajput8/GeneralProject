@@ -21,7 +21,7 @@ class SessionURLRequest {
     static func urlRequest(_ requestParams: APIRequestParams, _ boundary: String? = nil) -> URLRequest? {
 
         guard var apiRequestURL = generateRequestURL(requestParams) else {
-            LogHandler.reportLogOnConsole(.nullData, "null_url_request".localized())
+            LogHandler.shared.reportLogOnConsole(.nullData, "null_url_request".localized())
             return nil
         }
 
@@ -32,7 +32,7 @@ class SessionURLRequest {
 
         // set authorization type and it's value in header
         guard let authorizationTypeValue = APIRequestAuthorizationType.value(type: .bearerToken) else {
-            LogHandler.reportLogOnConsole(.nullData, "null_authorization_value".localized())
+            LogHandler.shared.reportLogOnConsole(.nullData, "null_authorization_value".localized())
             return nil
         }
 
@@ -55,7 +55,7 @@ class SessionURLRequest {
                     if let requestModelData = requestParams.requestModelData {
                         request.httpBody = requestModelData
                     } else {
-                        LogHandler.reportLogOnConsole(.nullData, "null_request_param_data".localized())
+                        LogHandler.shared.reportLogOnConsole(.nullData, "null_request_param_data".localized())
                         return nil
                     }
                 } else if type == .multipartFormData { } else { }
@@ -66,7 +66,7 @@ class SessionURLRequest {
 
     static fileprivate func generateRequestURL(_ requestParams: APIRequestParams) -> URL? {
         guard let baseURL = Environment.remoteRequestBaseURL() else {
-            LogHandler.reportLogOnConsole(nil, "Please base url in AppConstants.plist file"); return nil
+            LogHandler.shared.reportLogOnConsole(nil, "Please base url in AppConstants.plist file"); return nil
         }
 
         let endpoint = requestParams.endpoint.urlComponent()
@@ -74,7 +74,7 @@ class SessionURLRequest {
         guard var apiRequestURL = URL(string: completeEndpoint) else { return nil }
         // Now check if method type is Get or Delete, then append query params into generated api request url
         if requestParams.methodType == .get || requestParams.methodType == .delete, let queryParams = requestParams.params {
-            let dict = ParamsDataUtil.stringAnyDictToStringDict(queryParams)
+            let dict = ParamsDataUtil.shared.stringAnyDictToStringDict(queryParams)
             guard let requestURLWithQueryParams = apiRequestURL.append(queryParameters: dict) else { return nil }
             apiRequestURL = requestURLWithQueryParams
         }

@@ -31,15 +31,15 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func didTapAppleSignUp(_ sender: UIButton) {
-        SocialPlatformAuthorizationUtil.appleAuthorization(self, self, self)
+        // SocialPlatformAuthorizationUtil.appleAuthorization(self, self, self)
     }
 
     @IBAction func didTapFacebookSignUp(_ sender: UIButton) {
-        SocialPlatformAuthorizationUtil.facebookAuthorization(self)
+        // SocialPlatformAuthorizationUtil.facebookAuthorization(self)
     }
 
     @IBAction func didTapGoogleSignUp(_ sender: UIButton) {
-        SocialPlatformAuthorizationUtil.googleAuthorization(self)
+        // SocialPlatformAuthorizationUtil.googleAuthorization(self)
     }
 
     @IBAction func didTapContinue(_ sender: UIButton) {

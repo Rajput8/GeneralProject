@@ -45,7 +45,7 @@ class ChatViewModel {
         )
 
         if let newMessage {
-            LogHandler.reportLogOnConsole(nil, "messageParmas is: \(newMessage)")
+            LogHandler.shared.reportLogOnConsole(nil, "messageParmas is: \(newMessage)")
             SocketUtil.shared.sendMessage(message: newMessage) {_ in }
         }
     }
@@ -55,9 +55,9 @@ class ChatViewModel {
         if let messageData = SocketUtil.shared.jsonData(from: data) {
             do {
                 let message = try JSONDecoder().decode(ChatData.self, from: messageData)
-                LogHandler.reportLogOnConsole(nil, "userModel is: \(message)")
+                LogHandler.shared.reportLogOnConsole(nil, "userModel is: \(message)")
             } catch let error {
-                LogHandler.reportLogOnConsole(nil, "Something happen wrong here...\(error)")
+                LogHandler.shared.reportLogOnConsole(nil, "Something happen wrong here...\(error)")
             }
         }
     }

@@ -74,20 +74,20 @@ class RxAuthorizationViewModel {
                                                                   password: validatedData?.password,
                                                                   deviceType: 1,
                                                                   deviceToken: "123")
-        let modelData = ParamsDataUtil.generateModelData(authorizationRequestModel)
+        let modelData = ParamsDataUtil.shared.generateModelData(authorizationRequestModel)
         let requestParams = APIRequestParams(.login, .post, .data, modelData)
         SessionDataTask.dataTask(type: UserLogin.self, requestParams) { _ in
             DispatchQueue.main.async {
                 if let destVC = R.storyboard.main.rxEmployeeVC() {
-                    HelperUtil.pushViewController(destVC)
+                    HelperUtil.shared.pushViewController(destVC)
                 }
             }
         }
     }
 
     func performInAppPurchase() {
-        IAPUtil.manager.purchaseProduct(0)
-        IAPUtil.manager.performActionAccordingToTransactionState()
+        IAPUtil.shared.purchaseProduct(0)
+        IAPUtil.shared.performActionAccordingToTransactionState()
     }
 }
 

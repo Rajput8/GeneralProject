@@ -20,8 +20,8 @@ enum Environment: CaseIterable {
     }
 
     static func alreadySettedEnvironment() -> String? {
-        guard let dict = AppConfiguration.fetchAppConstantsPListInfo() else {
-            LogHandler.reportLogOnConsole(nil, "empty_app_environment_err_msg".localized())
+        guard let dict = AppConfiguration.shared.fetchAppConstantsPListInfo() else {
+            LogHandler.shared.reportLogOnConsole(nil, "empty_app_environment_err_msg".localized())
             return nil
         }
         // Remote request baseURL according to environment mode
@@ -42,8 +42,8 @@ enum Environment: CaseIterable {
     }
 
     static func remoteRequestBaseURL() -> String? {
-        guard let dict = AppConfiguration.fetchAppConstantsPListInfo() else {
-            LogHandler.reportLogOnConsole(nil, "empty_app_environment_err_msg".localized()); return nil
+        guard let dict = AppConfiguration.shared.fetchAppConstantsPListInfo() else {
+            LogHandler.shared.reportLogOnConsole(nil, "empty_app_environment_err_msg".localized()); return nil
         }
 
         let key = "\(currentEnvironment().mode)_Base_URL"
@@ -51,7 +51,7 @@ enum Environment: CaseIterable {
             return keyValue
         } else {
             let errMsg = String(format: "empty_base_url_err_msg".localized(), [key])
-            LogHandler.reportLogOnConsole(nil, errMsg)
+            LogHandler.shared.reportLogOnConsole(nil, errMsg)
             return nil
         }
     }

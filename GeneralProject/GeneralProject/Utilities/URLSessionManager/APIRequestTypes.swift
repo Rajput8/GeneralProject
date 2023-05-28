@@ -44,7 +44,7 @@ enum APIRequestAuthorizationType {
         case .bearerToken:
             return "Bearer \(APIConstants.bearerToken)"
         case .basicAuth:
-            let basicAuth = APIRequestResources.basicAuth(APIConstants.authUsername, APIConstants.authPassword)
+            let basicAuth = APIRequestResources.shared.basicAuth(APIConstants.authUsername, APIConstants.authPassword)
             return "Basic \(basicAuth)"
         case .apiKey:
             return APIConstants.apiKey

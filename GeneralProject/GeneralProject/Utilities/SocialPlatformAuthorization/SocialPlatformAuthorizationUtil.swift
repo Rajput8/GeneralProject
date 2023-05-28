@@ -3,11 +3,13 @@ import AuthenticationServices
 import FBSDKLoginKit
 import GoogleSignIn
 
-class SocialPlatformAuthorizationUtil {
+class SocialPlatformAuthorizationUtil: UIViewController {
 
-    fileprivate static var loginManager = LoginManager()
-    fileprivate static var googleClientID = "99838163458-ufemgib9nb4dcvnto8jqi6sbv1o6angs.apps.googleusercontent.com"
-    fileprivate static var appStoreAppID = "1534079797"
+    static let shared = SocialPlatformAuthorizationUtil()
+
+    fileprivate var loginManager = LoginManager()
+    fileprivate var googleClientID = "99838163458-ufemgib9nb4dcvnto8jqi6sbv1o6angs.apps.googleusercontent.com"
+    fileprivate var appStoreAppID = "1534079797"
 
     static func appleAuthorization(_ currentVC: UIViewController,
                                    _ delegate: ASAuthorizationControllerDelegate,
@@ -26,17 +28,17 @@ class SocialPlatformAuthorizationUtil {
         }
     }
 
-    static func googleAuthorization(_ currentVC: UIViewController) {
+    func googleAuthorization(_ currentVC: UIViewController) {
         let signInConfig = GIDConfiguration.init(clientID: googleClientID)
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: currentVC) { user, error in
             guard error == nil else { return }
             guard let user = user, let userID = user.userID, let email = user.profile?.email else { return }
             let userData = AuthorizationRequestModel.init(email: email, socialUserId: userID)
-            socialPlatformAuthorizationAPI(userData, currentVC)
+            self.socialPlatformAuthorizationAPI(userData, currentVC)
         }
     }
 
-    static func facebookAuthorization(_ currentVC: UIViewController) {
+    func facebookAuthorization(_ currentVC: UIViewController) {
         if AccessToken.current == nil {
             loginManager.logIn(permissions: ["public_profile", "email"], from: currentVC) { (result, error) in
                 if let resultInfo = result {
@@ -56,7 +58,7 @@ class SocialPlatformAuthorizationUtil {
         }
     }
 
-    fileprivate static func getFBUserData(_ currentVC: UIViewController) {
+    fileprivate func getFBUserData(_ currentVC: UIViewController) {
         let params = ["fields": "id, name, first_name, last_name, picture.type(large), email "]
         let graphRequest = GraphRequest.init(graphPath: "/me", parameters: params)
         let connection = GraphRequestConnection()
@@ -74,13 +76,13 @@ class SocialPlatformAuthorizationUtil {
                 }
                 // TODOs: Perform api operation
                 let userData = AuthorizationRequestModel.init(email: email, socialUserId: id)
-                socialPlatformAuthorizationAPI(userData, currentVC)
+                self.socialPlatformAuthorizationAPI(userData, currentVC)
             }
         }
         connection.start()
     }
 
-    static func socialPlatformAuthorizationAPI(_ userData: AuthorizationRequestModel, _ currentVC: UIViewController) {
+    func socialPlatformAuthorizationAPI(_ userData: AuthorizationRequestModel, _ currentVC: UIViewController) {
         // TODOs: under construction 😊
     }
 }
@@ -106,7 +108,7 @@ extension UIViewController: ASAuthorizationControllerDelegate {
                 debugPrint("identityToken is: ", identityToken)
                 let userData = AuthorizationRequestModel.init(email: appleIDCredential.email,
                                                               socialUserId: appleIDCredential.user)
-                SocialPlatformAuthorizationUtil.socialPlatformAuthorizationAPI(userData, self)
+                // SocialPlatformAuthorizationUtil.socialPlatformAuthorizationAPI(userData, self)
             }
         } else if let passwordCredential = authorization.credential as? ASPasswordCredential {
             // Sign in using an existing iCloud Keychain credential.

@@ -146,10 +146,10 @@ class KeychainItem {
     private static func performedQueryStatus(_ status: OSStatus) -> KeychainError {
         // Check the return status and throw an error if appropriate.
         if status == errSecSuccess {
-            LogHandler.reportLogOnConsole(nil, "success")
+            LogHandler.shared.reportLogOnConsole(nil, "success")
             return KeychainError.noError
         } else {
-            LogHandler.reportLogOnConsole(nil, "fail, something went wrong")
+            LogHandler.shared.reportLogOnConsole(nil, "fail, something went wrong")
             return KeychainError.error
         }
     }
@@ -210,7 +210,7 @@ class KeychainItem {
             let data = try PropertyListEncoder.init().encode(packet)
             return data
         } catch let error as NSError {
-            LogHandler.reportLogOnConsole(nil, error.localizedDescription)
+            LogHandler.shared.reportLogOnConsole(nil, error.localizedDescription)
         }
         return nil
     }
@@ -220,7 +220,7 @@ class KeychainItem {
             let packet = try PropertyListDecoder.init().decode([PasswordDetails].self, from: data)
             return packet
         } catch let error as NSError {
-            LogHandler.reportLogOnConsole(nil, error.localizedDescription)
+            LogHandler.shared.reportLogOnConsole(nil, error.localizedDescription)
         }
 
         return nil

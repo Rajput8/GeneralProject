@@ -5,6 +5,7 @@ import SocketIO
 class SocketUtil {
 
     static var shared = SocketUtil()
+
     fileprivate var manager: SocketManager?
     fileprivate var socket: SocketIOClient?
 
@@ -18,10 +19,10 @@ class SocketUtil {
         socket.once(clientEvent: .connect) { (data, _) in
             switch socket.status {
             case .connected:
-                LogHandler.reportLogOnConsole(nil, "socket connected..")
+                LogHandler.shared.reportLogOnConsole(nil, "socket connected..")
                 if let jsonData = try? JSONEncoder().encode(params) {
                     if let jsonString = String(data: jsonData, encoding: .utf8) {
-                        LogHandler.reportLogOnConsole(nil, "jsonString is: \(jsonString)")
+                        LogHandler.shared.reportLogOnConsole(nil, "jsonString is: \(jsonString)")
                         self.connectUser(param: jsonString) { }
                         socket.removeAllHandlers()
                         // self.joinedUsersList({ response in completion(response) })
@@ -36,13 +37,13 @@ class SocketUtil {
 
         // Connection disconected.
         socket.on(clientEvent: .disconnect) { (_, _) in
-            LogHandler.reportLogOnConsole(nil, "socket disconnect \n")
+            LogHandler.shared.reportLogOnConsole(nil, "socket disconnect \n")
         }
 
         // Error in connection.
         socket.once(clientEvent: .error) { (data, _) in
-            LogHandler.reportLogOnConsole(nil, "connection error \n")
-            LogHandler.reportLogOnConsole(nil, "data is: \(data)")
+            LogHandler.shared.reportLogOnConsole(nil, "connection error \n")
+            LogHandler.shared.reportLogOnConsole(nil, "data is: \(data)")
         }
         socket.connect()
     }
@@ -66,7 +67,7 @@ class SocketUtil {
         guard let socket = manager?.defaultSocket else { return }
         if let jsonData = try? JSONEncoder().encode(message) {
             if let jsonString = String(data: jsonData, encoding: .utf8) {
-                LogHandler.reportLogOnConsole(nil, "jsonString is: \(jsonString)")
+                LogHandler.shared.reportLogOnConsole(nil, "jsonString is: \(jsonString)")
                 socket.emit( SocketEndpoints.sendMessage.urlComponent(), jsonString) {
                     completion(true)
                 }
@@ -85,13 +86,13 @@ class SocketUtil {
 
     func disconnect(params: [String: Any]) {
         guard let socket = manager?.defaultSocket else { return }
-        let dict = ParamsDataUtil.stringAnyDictToStringDict(params)
+        let dict = ParamsDataUtil.shared.stringAnyDictToStringDict(params)
         if let jsonData = try? JSONEncoder().encode(dict) {
             if let jsonString = String(data: jsonData, encoding: .utf8) {
-                LogHandler.reportLogOnConsole(nil, "jsonString is: \(jsonString)")
+                LogHandler.shared.reportLogOnConsole(nil, "jsonString is: \(jsonString)")
                 socket.emit(SocketEndpoints.exitUser.urlComponent(), jsonString) {
                     let status = socket.status
-                    LogHandler.reportLogOnConsole(nil, "socket staus is: \(status)")
+                    LogHandler.shared.reportLogOnConsole(nil, "socket staus is: \(status)")
                     socket.removeAllHandlers()
                     socket.manager?.reconnects = false
                     socket.disconnect()

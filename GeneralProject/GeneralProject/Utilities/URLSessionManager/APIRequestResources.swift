@@ -2,23 +2,25 @@ import UIKit
 
 class APIRequestResources {
 
-    static func appleDeviceId() -> String {
+    static let shared = APIRequestResources()
+
+    func appleDeviceId() -> String {
         let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? "NO_APPLE_DEVICE_IDENTIFIER"
         return deviceId
     }
 
-    static func basicAuth(_ userName: String, _ password: String) -> String {
+    func basicAuth(_ userName: String, _ password: String) -> String {
         let credentialString = "\(userName):\(password)"
         guard let credentialData = credentialString.data(using: String.Encoding.utf8) else { return "" }
         let base64Credentials = credentialData.base64EncodedString(options: [])
         return base64Credentials
     }
 
-    static func requestURL(request: URLRequest) -> String {
+    func requestURL(request: URLRequest) -> String {
         return request.url?.absoluteString ?? "null_url".localized()
     }
 
-    static func remoteErrorAlert(_ title: String, _ msg: String) {
+    func remoteErrorAlert(_ title: String, _ msg: String) {
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "dismiss".localized(),
                                                 style: UIAlertAction.Style.default,
@@ -32,7 +34,7 @@ class APIRequestResources {
         }
     }
 
-    static func parseError(_ error: Error) -> String {
+    func parseError(_ error: Error) -> String {
         guard let decodingError = error as? DecodingError else { return "data_not_parseable_to_string".localized() }
         let err = "\(decodingError)"
         let errDesc = String(format: "parse_error_message".localized(), arguments: [err])

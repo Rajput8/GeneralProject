@@ -16,7 +16,7 @@ class EmployeesViewModel {
                 // self.employeesData = ObservableUtil(empData)
 
             case .failure(let error):
-                LogHandler.reportLogOnConsole(nil, error.localizedDescription)
+                LogHandler.shared.reportLogOnConsole(nil, error.localizedDescription)
             }
         }
     }

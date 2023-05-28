@@ -3,7 +3,9 @@ import UIKit
 
 final class AppAppearance {
 
-    static func setupAppearance() {
+    static let shared = AppAppearance()
+
+    func setupAppearance() {
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
             // appearance.configureWithOpaqueBackground()
@@ -18,7 +20,7 @@ final class AppAppearance {
         }
     }
 
-    static func setUpTabbarShadow(_ tabBarController: UITabBarController) {
+    func setUpTabbarShadow(_ tabBarController: UITabBarController) {
         let tabGradientView = UIView(frame: tabBarController.tabBar.bounds)
         tabGradientView.backgroundColor = UIColor.white
         tabGradientView.translatesAutoresizingMaskIntoConstraints = false

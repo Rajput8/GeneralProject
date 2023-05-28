@@ -19,7 +19,7 @@ struct Validator {
         // validate password
         if let pwd = password?.trimmed() {
             guard !pwd.isEmpty else { throw ValidationError.empty(.password) }
-            guard ValidatorRegex.isValidPassword(pwd: pwd) else {
+            guard ValidatorRegex.shared.isValidPassword(pwd: pwd) else {
                 throw ValidationError.invalidWithReason(reason: "invalid_password".localized(), .password)
             }
             self.password = pwd
@@ -37,7 +37,7 @@ struct Validator {
 class EmailPropertyWrapper {
     private var emailValue: String
     var wrappedValue: String {
-        get { return ValidatorRegex.isValidEmail(email: emailValue) ? emailValue : "" }
+        get { return ValidatorRegex.shared.isValidEmail(email: emailValue) ? emailValue : "" }
         set { emailValue = newValue }
     }
     init(_ email: String) { emailValue = email }

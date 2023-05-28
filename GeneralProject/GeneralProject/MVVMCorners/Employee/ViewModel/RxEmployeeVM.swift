@@ -31,7 +31,7 @@ class RxEmployeeViewModel {
     }
 
     func getListFromJson() {
-        guard let listData = HelperUtil.loadDataFromJson(),
+        guard let listData = HelperUtil.shared.loadDataFromJson(),
               let categoriesData = listData.data?.categories else { return }
         self.categoriesListData.accept(categoriesData)
     }
@@ -45,7 +45,7 @@ class RxEmployeeViewModel {
             SessionUploadTask.uploadTask(type: ImageUpload.self, requestParams) { response in
                 switch response {
                 case .success(let resp):
-                    LogHandler.reportLogOnConsole(nil, "resp is: \(resp)")
+                    LogHandler.shared.reportLogOnConsole(nil, "resp is: \(resp)")
                 case .failure(let error):
                     self.isRequestHasErr.accept(true)
                     self.requestErrMessage.accept(error.localizedDescription)

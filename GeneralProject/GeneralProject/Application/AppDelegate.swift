@@ -11,10 +11,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         KeyboardStateListener.shared.start()
-        AppAppearance.setupAppearance()
-        AppConfiguration.disableAutolayoutErrorWarning()
+        AppAppearance.shared.setupAppearance()
+        AppConfiguration.shared.disableAutolayoutErrorWarning()
         // MARK: - Fetching Registered In-App Purchase products
-        IAPUtil.manager.getRegisteredProducts(.yearlySubscription)
+        IAPUtil.shared.getRegisteredProducts(.yearlySubscription)
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }

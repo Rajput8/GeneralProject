@@ -22,7 +22,7 @@ struct WebPagesURLHandler {
     }
 
     func errorMessage(_ errMessage: String) {
-        HelperUtil.getCurrentVC { currentVC in
+        HelperUtil.shared.getCurrentVC { currentVC in
             Toast.show(message: errMessage, controller: currentVC)
         }
     }

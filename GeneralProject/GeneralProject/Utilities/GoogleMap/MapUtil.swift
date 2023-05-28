@@ -5,15 +5,17 @@ import CoreLocation
 class MapUtil {
 
     // MARK: Variables
-    static var locationMarker: GMSMarker?
+    static var shared = MapUtil()
+
+    var locationMarker: GMSMarker?
 
     // MARK: Delegate's Method
-    static func googleMapSetUp(_ googleMapView: GMSMapView,
-                               _ markerIcon: UIImage?,
-                               _ scaleBarView: ScaleBarView? = nil,
-                               _ lat: Double? = nil,
-                               _ log: Double? = nil,
-                               _ zoom: Float? = nil) {
+    func googleMapSetUp(_ googleMapView: GMSMapView,
+                        _ markerIcon: UIImage?,
+                        _ scaleBarView: ScaleBarView? = nil,
+                        _ lat: Double? = nil,
+                        _ log: Double? = nil,
+                        _ zoom: Float? = nil) {
         googleMapView.isMyLocationEnabled = true
         googleMapView.settings.myLocationButton = true
         if let scaleBarView = scaleBarView { scaleBarView.mapView = googleMapView }
@@ -34,13 +36,13 @@ class MapUtil {
         }
     }
 
-    static func reverseGeoCodeUsingGoogleMapAPI(_ lat: Double,
-                                                _ log: Double,
-                                                _ completion: @escaping (_ address: String?, _ error: String?) -> Void) {
+    func reverseGeoCodeUsingGoogleMapAPI(_ lat: Double,
+                                         _ log: Double,
+                                         _ completion: @escaping (_ address: String?, _ error: String?) -> Void) {
         let coordinates = CLLocation(latitude: lat, longitude: log)
         let lat = coordinates.coordinate.latitude
         let log = coordinates.coordinate.longitude
-        let link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(log)&key=\(AppConfiguration.manager.googleServicesApiKey)"
+        let link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(log)&key=\(AppConfiguration.shared.googleServicesApiKey)"
         guard let url = URL(string: link) else { return }
         URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
             guard let dataResult = data else { return }
@@ -59,14 +61,14 @@ class MapUtil {
         }).resume()
     }
 
-    static func fetchRoute(_ mapView: GMSMapView, _ source: CLLocationCoordinate2D, _ destination: CLLocationCoordinate2D) {
+    func fetchRoute(_ mapView: GMSMapView, _ source: CLLocationCoordinate2D, _ destination: CLLocationCoordinate2D) {
         let session = URLSession.shared
         let sourceLat = source.latitude
         let sourceLog = source.longitude
         let destLat = destination.latitude
         let destLog = destination.longitude
 
-        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(sourceLat),\(sourceLog)&destination=\(destLat),\(destLog)&sensor=false&mode=driving&key=\(AppConfiguration.manager.googleServicesApiKey)")!
+        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(sourceLat),\(sourceLog)&destination=\(destLat),\(destLog)&sensor=false&mode=driving&key=\(AppConfiguration.shared.googleServicesApiKey)")!
 
         let task = session.dataTask(with: url, completionHandler: { (data, _, error) in
             guard error == nil else {
@@ -82,16 +84,16 @@ class MapUtil {
             guard let polyLineString = overviewPolyline["points"] as? String else { return }
             // Call this method to draw path on map
             DispatchQueue.main.async {
-                drawPath(polyLineString, mapView, source, destination)
+                self.drawPath(polyLineString, mapView, source, destination)
             }
         })
         task.resume()
     }
 
-    static func drawPath(_ polyStr: String,
-                         _ mapView: GMSMapView,
-                         _ source: CLLocationCoordinate2D,
-                         _ destination: CLLocationCoordinate2D) {
+    func drawPath(_ polyStr: String,
+                  _ mapView: GMSMapView,
+                  _ source: CLLocationCoordinate2D,
+                  _ destination: CLLocationCoordinate2D) {
         let path = GMSPath(fromEncodedPath: polyStr)
         let polyline = GMSPolyline(path: path)
         polyline.strokeColor = .systemBlue
@@ -103,9 +105,9 @@ class MapUtil {
         mapView.animate(toZoom: currentZoom - 1.4)
     }
 
-    static func locationPermissionStatus(completionHandler: @escaping (_ status: LocationPermissionStatus) -> Void) {
+    func locationPermissionStatus(completionHandler: @escaping (_ status: LocationPermissionStatus) -> Void) {
         if CLLocationManager.locationServicesEnabled() {
-            switch AppConfiguration.manager.locationManager?.authorizationStatus {
+            switch AppConfiguration.shared.locationManager?.authorizationStatus {
             case .notDetermined: completionHandler(.notDetermined)
             case .restricted: completionHandler(.restricted)
             case .denied: completionHandler(.denied)
@@ -119,5 +121,5 @@ class MapUtil {
         }
     }
 
-    static func showMarkerIndicator() { }
+    func showMarkerIndicator() { }
 }

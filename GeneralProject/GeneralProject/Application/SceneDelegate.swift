@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if scene as? UIWindowScene != nil { }
         // guard let windowScene = (scene as? UIWindowScene) else { return }
         // self.window = UIWindow(windowScene: windowScene)
-        AppConfiguration.disableAutolayoutErrorWarning()
+        AppConfiguration.shared.disableAutolayoutErrorWarning()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -34,22 +34,24 @@ class DateUtil {
         }
     }
 
-    static var dateFormatter = DateFormatter()
-    fileprivate  static var calendar = Calendar.current
+    static let shared = DateUtil()
 
-    private static func getDateFormatter(_ dateFormat: String) -> DateFormatter {
+    var dateFormatter = DateFormatter()
+    fileprivate var calendar = Calendar.current
+
+    private func getDateFormatter(_ dateFormat: String) -> DateFormatter {
         dateFormatter.dateFormat = dateFormat
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter
     }
 
-    static func convertDateIntoString(_ dateFormat: DateFormat, _ date: Date) -> String {
+    func convertDateIntoString(_ dateFormat: DateFormat, _ date: Date) -> String {
         let dateFormatter = getDateFormatter(dateFormat.formatValue)
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date)
     }
 
-    static func convertStringIntoDate(_ dateFormat: DateFormat, _ date: String) -> Date? {
+    func convertStringIntoDate(_ dateFormat: DateFormat, _ date: String) -> Date? {
         let dateFormatter = getDateFormatter(dateFormat.formatValue)
         if let date = dateFormatter.date(from: date) {
             return date
@@ -57,7 +59,7 @@ class DateUtil {
         return nil
     }
 
-    static func changeStringDateFormat(_ acutalDateFormat: DateFormat, convertedDateFormat: DateFormat, _ date: String) -> String? {
+    func changeStringDateFormat(_ acutalDateFormat: DateFormat, convertedDateFormat: DateFormat, _ date: String) -> String? {
         let dateFormatter = getDateFormatter(acutalDateFormat.formatValue)
         if let actualDate = dateFormatter.date(from: date) {
             dateFormatter.dateFormat = convertedDateFormat.formatValue
@@ -66,14 +68,14 @@ class DateUtil {
         return nil
     }
 
-    static func quickSearchDateTimeParamHandler(_ option: QuickSearchOption) -> String? {
+    func quickSearchDateTimeParamHandler(_ option: QuickSearchOption) -> String? {
         if let date = quickSearchDate(option) {
             return "\(date)..now"
         }
         return nil
     }
 
-    fileprivate static func quickSearchDate(_ option: QuickSearchOption) -> String? {
+    fileprivate func quickSearchDate(_ option: QuickSearchOption) -> String? {
         var date: Date?
         switch option {
         case .lastHour:
@@ -90,16 +92,16 @@ class DateUtil {
         return convertDateIntoString(.yyyyMMddTHHmmssZ, optionDate)
     }
 
-    static func dateTimeParamHandler(_ start: Date,
-                                     _ end: Date,
-                                     _ completionHandler: @escaping (_ param: String?, _ error: String?) -> Void) {
+    func dateTimeParamHandler(_ start: Date,
+                              _ end: Date,
+                              _ completionHandler: @escaping (_ param: String?, _ error: String?) -> Void) {
         if start > end {
             completionHandler(nil, "error_date_range_selection".localized())
         } else {
             if let current = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
                 var param = String()
-                let fromDateTime = DateUtil.convertDateIntoString(.yyyyMMddTHHmmssZ, start)
-                let toDateTime = DateUtil.convertDateIntoString(.yyyyMMddTHHmmssZ, end)
+                let fromDateTime = DateUtil.shared.convertDateIntoString(.yyyyMMddTHHmmssZ, start)
+                let toDateTime = DateUtil.shared.convertDateIntoString(.yyyyMMddTHHmmssZ, end)
                 if end < current {
                     param = "\(fromDateTime)..\(toDateTime)"
                 } else {
@@ -110,7 +112,7 @@ class DateUtil {
         }
     }
 
-    static func convertSecondsIntoFormattedString(_ seconds: Double) -> String {
+    func convertSecondsIntoFormattedString(_ seconds: Double) -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.day, .hour, .minute, .second]
         formatter.unitsStyle = .abbreviated
@@ -120,7 +122,7 @@ class DateUtil {
         return ""
     }
 
-    static func calculateDateSinceAgo(_ date: Date) -> String {
+    func calculateDateSinceAgo(_ date: Date) -> String {
         let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
         let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: Date())
 

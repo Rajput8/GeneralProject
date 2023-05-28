@@ -83,6 +83,7 @@
 		3D2F2A87293F7D860022C0CB /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A68293F7D860022C0CB /* MapUtil.swift */; };
 		3D2F2A89293F7D860022C0CB /* OpenWebPageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F2A6A293F7D860022C0CB /* OpenWebPageUtil.swift */; };
 		3D5073522A18D2E8001D04CF /* LoaderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5073512A18D2E8001D04CF /* LoaderUtil.swift */; };
+		3D54D3862A23628400C35BCB /* LabelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D54D3852A23628400C35BCB /* LabelExt.swift */; };
 		3D5CA8472A21CADA00C0E8DD /* DoubleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CA8462A21CADA00C0E8DD /* DoubleExt.swift */; };
 		3D5CA8492A21CB5F00C0E8DD /* NSLayoutConstraintExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CA8482A21CB5F00C0E8DD /* NSLayoutConstraintExt.swift */; };
 		3D5CA84D2A21FAC500C0E8DD /* TableViewWithHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CA84C2A21FAC500C0E8DD /* TableViewWithHeader.swift */; };
@@ -235,6 +236,7 @@
 		3D2F2A68293F7D860022C0CB /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUtil.swift; sourceTree = "<group>"; };
 		3D2F2A6A293F7D860022C0CB /* OpenWebPageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWebPageUtil.swift; sourceTree = "<group>"; };
 		3D5073512A18D2E8001D04CF /* LoaderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderUtil.swift; sourceTree = "<group>"; };
+		3D54D3852A23628400C35BCB /* LabelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExt.swift; sourceTree = "<group>"; };
 		3D5CA8462A21CADA00C0E8DD /* DoubleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExt.swift; sourceTree = "<group>"; };
 		3D5CA8482A21CB5F00C0E8DD /* NSLayoutConstraintExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExt.swift; sourceTree = "<group>"; };
 		3D5CA84C2A21FAC500C0E8DD /* TableViewWithHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewWithHeader.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				3D5CA8462A21CADA00C0E8DD /* DoubleExt.swift */,
 				3D0CA3ED29530F2C0034B5D0 /* ImageExt.swift */,
 				3D0CBFFC29658B7D00A6BC07 /* ImageViewExt.swift */,
+				3D54D3852A23628400C35BCB /* LabelExt.swift */,
 				3D0CBFF4296540C700A6BC07 /* MiscExt.swift */,
 				3D0CA3EF29530F2C0034B5D0 /* NotificationExt.swift */,
 				3D5CA8482A21CB5F00C0E8DD /* NSLayoutConstraintExt.swift */,
@@ -1148,6 +1151,7 @@
 				3DF9784C2A0FA35100A36E1A /* AppEnvironment.swift in Sources */,
 				3D2F2A80293F7D860022C0CB /* APIConstants.swift in Sources */,
 				3DEDA2D3297290EE00977F06 /* EmployeeVM.swift in Sources */,
+				3D54D3862A23628400C35BCB /* LabelExt.swift in Sources */,
 				3D2F2A7C293F7D860022C0CB /* APIRequestResources.swift in Sources */,
 				3D0415AF29D31A9A0039E6F1 /* ChatVM.swift in Sources */,
 				3D0CA3F529530F2D0034B5D0 /* CollectionViewExt.swift in Sources */,

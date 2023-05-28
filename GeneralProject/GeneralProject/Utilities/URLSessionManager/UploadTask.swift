@@ -10,31 +10,31 @@ final class SessionUploadTask {
         let boundary = UUID().uuidString
 
         guard let request = SessionURLRequest.urlRequest(remoteRequestParams, boundary) else {
-            LoaderUtil.hideLoading()
+            LoaderUtil.shared.hideLoading()
             completion(.failure(.invalidRequest)) // "unexpected_error".localized()
             return
         }
 
-        LoaderUtil.showLoading()
-        LogHandler.requestLog(request)
+        LoaderUtil.shared.showLoading()
+        LogHandler.shared.requestLog(request)
         Monitor().startMonitoring { [ ] connection, reachable in
             let reachableStatus = Monitor.getCurrentConnectivityStatus(connection, reachable)
             if reachableStatus == .yes {
                 let data = uploadTaskParams(boundary, remoteRequestParams)
                 // Send a POST request to the URL, with the data we created earlier
                 let task = session.uploadTask(with: request, from: data, completionHandler: { data, response, err in
-                    LogHandler.responseLog(data, response, err)
+                    LogHandler.shared.responseLog(data, response, err)
                     APIResponse.responseHandler(data, response, err, completion)
-                    LoaderUtil.hideLoading()
+                    LoaderUtil.shared.hideLoading()
                 })
                 APIConstants.observation = task.progress.observe(\.fractionCompleted) { progress, _ in
-                    LogHandler.reportLogOnConsole(nil, "progress: \(progress.fractionCompleted)")
+                    LogHandler.shared.reportLogOnConsole(nil, "progress: \(progress.fractionCompleted)")
                 }
                 task.resume()
             } else {
-                LoaderUtil.hideLoading()
-                APIRequestResources.remoteErrorAlert("no_internet_connection".localized(),
-                                                     "device_connected_with_internet_warning".localized())
+                LoaderUtil.shared.hideLoading()
+                APIRequestResources.shared.remoteErrorAlert("no_internet_connection".localized(),
+                                                            "device_connected_with_internet_warning".localized())
             }
         }
     }
@@ -42,7 +42,7 @@ final class SessionUploadTask {
     private static func uploadTaskParams(_ boundary: String, _ remoteRequestParams: APIRequestParams) -> Data? {
         var data = Data()
         if let params = remoteRequestParams.params {
-            LogHandler.reportLogOnConsole(nil, "params is: \(remoteRequestParams.params ?? [:])")
+            LogHandler.shared.reportLogOnConsole(nil, "params is: \(remoteRequestParams.params ?? [:])")
             for(key, value) in params {
                 // Add the reqtype field and its value to the raw http request data
                 data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)

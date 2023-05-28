@@ -2,10 +2,12 @@ import UIKit
 
 class PopupUtil {
 
-    static func popupAlert(title: String?,
-                           message: String?,
-                           actionTitles: [String?],
-                           actions: [((UIAlertAction) -> Void)?]) {
+    static var shared = PopupUtil()
+
+    func popupAlert(title: String?,
+                    message: String?,
+                    actionTitles: [String?],
+                    actions: [((UIAlertAction) -> Void)?]) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         for (index, title) in actionTitles.enumerated() {
             let action = UIAlertAction(title: title, style: .default, handler: actions[index])
@@ -14,7 +16,7 @@ class PopupUtil {
             }
             alert.addAction(action)
         }
-        HelperUtil.getCurrentVC { currentVC in
+        HelperUtil.shared.getCurrentVC { currentVC in
             currentVC.present(alert, animated: true, completion: nil)
         }
     }

@@ -4,6 +4,7 @@ import UIKit
 class KeyboardStateListener {
 
     static let shared = KeyboardStateListener()
+
     var isVisible = false
     var keyboardheight: CGFloat = 0.0
 

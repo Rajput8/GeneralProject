@@ -10,7 +10,7 @@ class APIResponse {
 
         guard 200 ... 299 ~= response.statusCode else {
             if response.statusCode == 401 { // Unauthorize user
-                DispatchQueue.main.async { if let destVC = R.storyboard.main.loginVC() { HelperUtil.makeRootVC(destVC) } }
+                DispatchQueue.main.async { if let destVC = R.storyboard.main.loginVC() { HelperUtil.shared.makeRootVC(destVC) } }
             } else {
                 decodeResponse(type: T.self, data, completion, false)
             }
@@ -30,7 +30,7 @@ class APIResponse {
                 completion(.failure(.errorMessage(resp.message ?? "")))
             }
         } catch {
-            let parseError = APIRequestResources.parseError(error)
+            let parseError = APIRequestResources.shared.parseError(error)
             completion(.failure(.errorMessageWithError(error, parseError)))
         }
     }

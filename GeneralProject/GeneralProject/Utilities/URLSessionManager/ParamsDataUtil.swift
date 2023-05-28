@@ -2,12 +2,14 @@ import Foundation
 
 class ParamsDataUtil {
 
-    static func jsonDataToString(_ jsonData: Data?) {
+    static let shared = ParamsDataUtil()
+
+    func jsonDataToString(_ jsonData: Data?) {
         guard let jsonData = jsonData else { return }
         _ = String(data: jsonData, encoding: .utf8)
     }
 
-    static func arrStringDictToString(_ dict: [[String: String]]) -> String? {
+    func arrStringDictToString(_ dict: [[String: String]]) -> String? {
         let encoder = JSONEncoder()
         if let jsonData = try? encoder.encode(dict) {
             if let jsonString = String(data: jsonData, encoding: .utf8) {
@@ -17,21 +19,21 @@ class ParamsDataUtil {
         return nil
     }
 
-    static func stringAnyDictToStringDict(_ dict: [String: Any]) -> [String: String] {
+    func stringAnyDictToStringDict(_ dict: [String: Any]) -> [String: String] {
         var newDict = [String: String]()
         for (key, value) in dict { newDict[key] = "\(value)" }
         return newDict
     }
 
-    static func generateModelData<T: Codable>(_ value: T) -> Data? {
+    func generateModelData<T: Codable>(_ value: T) -> Data? {
         do {
             let jsonData = try JSONEncoder().encode(value)
             return jsonData
-        } catch { LogHandler.reportLogOnConsole(nil, "unable_to_generate_data_from_model".localized()) }
+        } catch { LogHandler.shared.reportLogOnConsole(nil, "unable_to_generate_data_from_model".localized()) }
         return nil
     }
 
-    static func generateModelRawJson<T: Codable>(_ value: T) -> [String: Any]? {
+    func generateModelRawJson<T: Codable>(_ value: T) -> [String: Any]? {
         guard let data = generateModelData(value) else { return nil }
         if let rawJson = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] { return rawJson }
         return nil
