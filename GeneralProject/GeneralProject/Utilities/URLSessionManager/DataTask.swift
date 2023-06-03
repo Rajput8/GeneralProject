@@ -10,7 +10,7 @@ final class SessionDataTask {
             return
         }
 
-        LoaderUtil.shared.showLoading()
+        if !requestParams.isHideLoadingIndicator { LoaderUtil.shared.showLoading() }
         LogHandler.shared.requestLog(request)
         Monitor().startMonitoring { [ ] connection, reachable in
             let reachableStatus = Monitor.getCurrentConnectivityStatus(connection, reachable)

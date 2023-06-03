@@ -7,13 +7,15 @@ struct APIRequestParams {
     var requestModelData: Data?
     var params: [String: Any]?
     let mediaContent: [MultipartMediaRequestParams]?
+    var isHideLoadingIndicator: Bool = false
 
     init(_ endpoint: APIEndpoints,
          _ methodType: APIRequestMethodType,
          _ contentType: APIRequestContentType? = nil,
          _ requestModelData: Data? = nil,
          _ params: [String: Any]? = nil,
-         _ mediaContent: [MultipartMediaRequestParams]? = nil) {
+         _ mediaContent: [MultipartMediaRequestParams]? = nil,
+         _ isHideLoadingIndicator: Bool = false) {
 
         self.endpoint = endpoint
         self.methodType = methodType
@@ -21,6 +23,7 @@ struct APIRequestParams {
         self.requestModelData = requestModelData
         self.params = params
         self.mediaContent = mediaContent
+        self.isHideLoadingIndicator = isHideLoadingIndicator
     }
 }
 
