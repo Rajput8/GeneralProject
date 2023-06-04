@@ -2,38 +2,6 @@ import Foundation
 
 class DateUtil {
 
-    enum DateFormat {
-        case HHmmaddMMyyyy
-        case yyyyMMddTHHmmssZ
-        case yyyymmdd
-        case HHmma
-
-        var formatValue: String {
-            switch self {
-            case .HHmmaddMMyyyy: return "HH:mm a dd/MM/yyyy"
-            case .yyyyMMddTHHmmssZ: return "yyyy-MM-dd'T'HH:mm:ss'Z'"
-            case .yyyymmdd: return "yyyyMMdd"
-            case .HHmma: return "HH:mm a"
-            }
-        }
-    }
-
-    enum QuickSearchOption: CaseIterable {
-        case lastHour
-        case today
-        case yesterday
-        case thisWeek
-
-        var name: String {
-            switch self {
-            case .lastHour: return "last_hour".localized()
-            case .today: return "today".localized()
-            case .yesterday: return "yesterday".localized()
-            case .thisWeek: return "this_week".localized()
-            }
-        }
-    }
-
     static let shared = DateUtil()
 
     var dateFormatter = DateFormatter()
@@ -45,51 +13,16 @@ class DateUtil {
         return dateFormatter
     }
 
-    func convertDateIntoString(_ dateFormat: DateFormat, _ date: Date) -> String {
+    func dateToString(_ dateFormat: DateFormat, _ date: Date) -> String {
         let dateFormatter = getDateFormatter(dateFormat.formatValue)
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date)
     }
 
-    func convertStringIntoDate(_ dateFormat: DateFormat, _ date: String) -> Date? {
+    func stringToDate(_ dateFormat: DateFormat, _ date: String) -> Date? {
         let dateFormatter = getDateFormatter(dateFormat.formatValue)
-        if let date = dateFormatter.date(from: date) {
-            return date
-        }
-        return nil
-    }
-
-    func changeStringDateFormat(_ acutalDateFormat: DateFormat, convertedDateFormat: DateFormat, _ date: String) -> String? {
-        let dateFormatter = getDateFormatter(acutalDateFormat.formatValue)
-        if let actualDate = dateFormatter.date(from: date) {
-            dateFormatter.dateFormat = convertedDateFormat.formatValue
-            return dateFormatter.string(from: actualDate)
-        }
-        return nil
-    }
-
-    func quickSearchDateTimeParamHandler(_ option: QuickSearchOption) -> String? {
-        if let date = quickSearchDate(option) {
-            return "\(date)..now"
-        }
-        return nil
-    }
-
-    fileprivate func quickSearchDate(_ option: QuickSearchOption) -> String? {
-        var date: Date?
-        switch option {
-        case .lastHour:
-            date = Calendar.current.date(byAdding: .hour, value: -1, to: Date())
-        case .today:
-            date = Date()
-        case .yesterday:
-            date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
-        case .thisWeek:
-            date = Date().startOfWeek
-        }
-
-        guard let optionDate = date else { return nil }
-        return convertDateIntoString(.yyyyMMddTHHmmssZ, optionDate)
+        guard let date = dateFormatter.date(from: date) else { return nil }
+        return date
     }
 
     func dateTimeParamHandler(_ start: Date,
@@ -100,8 +33,8 @@ class DateUtil {
         } else {
             if let current = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
                 var param = String()
-                let fromDateTime = DateUtil.shared.convertDateIntoString(.yyyyMMddTHHmmssZ, start)
-                let toDateTime = DateUtil.shared.convertDateIntoString(.yyyyMMddTHHmmssZ, end)
+                let fromDateTime = dateToString(.yyyyMMddTHHmmssZ, start)
+                let toDateTime = dateToString(.yyyyMMddTHHmmssZ, end)
                 if end < current {
                     param = "\(fromDateTime)..\(toDateTime)"
                 } else {
@@ -171,5 +104,30 @@ class DateUtil {
                 return String(format: "years_days_in_future".localized(), arguments: [year, day])
             }
         }
+    }
+
+    func convertStringUTCToLocal(_ dateTime: String,
+                                 _ receivedDateTimeFormat: DateFormat = DateFormat.yyyyMMddHHmmss,
+                                 _ toFormat: DateFormat = DateFormat.MMMdhmma) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local
+        //  dateFormatter.locale = Locale(identifier: "fa-IR")
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = receivedDateTimeFormat.formatValue
+        guard let date = dateFormatter.date(from: dateTime) else {
+            LogHandler.shared.reportLogOnConsole(nil, "Unable to convert string to date")
+            return nil
+        }
+
+        let strDate = dateFormatter.string(from: date)
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        guard let utcData = dateFormatter.date(from: strDate) else {
+            LogHandler.shared.reportLogOnConsole(nil, "Unable to convert string to date")
+            return nil
+        }
+
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = toFormat.formatValue
+        return dateFormatter.string(from: utcData)
     }
 }

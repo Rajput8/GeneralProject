@@ -24,14 +24,26 @@ class APIResponse {
             switch isSuccess {
             case true:
                 let resp = try JSONDecoder().decode(T.self, from: data)
+                if let basicResponse = resp as? APIBasicResponse { showingSuccessOrErrorMessage(basicResponse) }
                 completion(.success(resp.self))
             case false:
                 let resp = try JSONDecoder().decode(APIBasicResponse.self, from: data)
+                showingSuccessOrErrorMessage(resp)
                 completion(.failure(.errorMessage(resp.message ?? "")))
             }
         } catch {
             let parseError = APIRequestResources.shared.parseError(error)
             completion(.failure(.errorMessageWithError(error, parseError)))
+        }
+    }
+
+    /// Showing toast either for success's or error's message
+    /// Sometime we get only api response structure as APIBasicResponse, ex: when we perform follow action, against follow action we get success message i.e. Your follow request sent to User.
+    /// Above mentioned scenarion we showing Toast with 'Your follow request sent to User ' message
+    /// Sometime we get error. Then we'll show Toast according to that.
+    fileprivate static func showingSuccessOrErrorMessage(_ resp: APIBasicResponse) {
+        HelperUtil.shared.getVisibleVC { visibleVC in
+            Toast.show(message: resp.message ?? "", controller: visibleVC)
         }
     }
 }

@@ -14,11 +14,33 @@
                         "location": "Block B › Row 2 › Shelf 1",
                     }
                 ]
-            },{
+            }, {
                 "name": "Vegetables",
                 "products": [
                     {
                         "name": "Frozen Vegetable",
+                        "location": "Block B › Row 2 › Shelf 1",
+                    }
+                ]
+            }, {
+                "name": "Snacks",
+                "products": [
+                    {
+                        "name": "Cake",
+                        "location": "Block B › Row 2 › Shelf 1",
+                    },{
+                        "name": "Snacks",
+                        "location": "Block B › Row 2 › Shelf 1",
+                    }
+                ]
+            }, {
+                "name": "Dairy",
+                "products": [
+                    {
+                        "name": "Cake",
+                        "location": "Block B › Row 2 › Shelf 1",
+                    },{
+                        "name": "Snacks",
                         "location": "Block B › Row 2 › Shelf 1",
                     }
                 ]

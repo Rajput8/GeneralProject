@@ -27,8 +27,8 @@ class APIRequestResources {
                                                 handler: nil))
         DispatchQueue.main.async {
             if let keyWindow = UIWindow.key {
-                if let currentVC = keyWindow.topViewController() {
-                    currentVC.present(alertController, animated: true, completion: nil)
+                if let visibleVC = keyWindow.visibleVC() {
+                    visibleVC.present(alertController, animated: true, completion: nil)
                 }
             }
         }

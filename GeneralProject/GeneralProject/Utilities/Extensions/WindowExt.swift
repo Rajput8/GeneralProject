@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIWindow {
-    func topViewController() -> UIViewController? {
+    func visibleVC() -> UIViewController? {
         var top = self.rootViewController
         while true {
             if let presented = top?.presentedViewController {

@@ -22,8 +22,8 @@ struct WebPagesURLHandler {
     }
 
     func errorMessage(_ errMessage: String) {
-        HelperUtil.shared.getCurrentVC { currentVC in
-            Toast.show(message: errMessage, controller: currentVC)
+        HelperUtil.shared.getVisibleVC { visibleVC in
+            Toast.show(message: errMessage, controller: visibleVC)
         }
     }
 }

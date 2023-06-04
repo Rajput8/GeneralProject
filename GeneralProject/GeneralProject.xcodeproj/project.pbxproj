@@ -88,6 +88,8 @@
 		3D5CA8492A21CB5F00C0E8DD /* NSLayoutConstraintExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CA8482A21CB5F00C0E8DD /* NSLayoutConstraintExt.swift */; };
 		3D5CA84D2A21FAC500C0E8DD /* TableViewWithHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5CA84C2A21FAC500C0E8DD /* TableViewWithHeader.swift */; };
 		3D5CA84F2A21FEF300C0E8DD /* List.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D5CA84E2A21FEF300C0E8DD /* List.json */; };
+		3D6291F42A2B34E00016A689 /* DateUtilEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6291F32A2B34E00016A689 /* DateUtilEnums.swift */; };
+		3D6291F62A2B60B90016A689 /* GradientViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6291F52A2B60B90016A689 /* GradientViewExt.swift */; };
 		3D7BBF8E2976B967007D92BF /* FBSDKCoreKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */; };
 		3D7BBF8F2976B967007D92BF /* FBSDKCoreKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D7BBF932976CAB8007D92BF /* AuthorizationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7BBF922976CAB8007D92BF /* AuthorizationVM.swift */; };
@@ -241,6 +243,8 @@
 		3D5CA8482A21CB5F00C0E8DD /* NSLayoutConstraintExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExt.swift; sourceTree = "<group>"; };
 		3D5CA84C2A21FAC500C0E8DD /* TableViewWithHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewWithHeader.swift; sourceTree = "<group>"; };
 		3D5CA84E2A21FEF300C0E8DD /* List.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = List.json; sourceTree = "<group>"; };
+		3D6291F32A2B34E00016A689 /* DateUtilEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilEnums.swift; sourceTree = "<group>"; };
+		3D6291F52A2B60B90016A689 /* GradientViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewExt.swift; sourceTree = "<group>"; };
 		3D7BBF862976B88B007D92BF /* FBSDKLoginKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBSDKLoginKit.xcframework; path = Pods/FBSDKLoginKit/XCFrameworks/FBSDKLoginKit.xcframework; sourceTree = "<group>"; };
 		3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBSDKCoreKit.xcframework; path = Pods/FBSDKCoreKit/XCFrameworks/FBSDKCoreKit.xcframework; sourceTree = "<group>"; };
 		3D7BBF922976CAB8007D92BF /* AuthorizationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVM.swift; sourceTree = "<group>"; };
@@ -394,6 +398,7 @@
 				3D0CA3E929530F2C0034B5D0 /* CollectionViewExt.swift */,
 				3D0CA3F329530F2C0034B5D0 /* DateExt.swift */,
 				3D5CA8462A21CADA00C0E8DD /* DoubleExt.swift */,
+				3D6291F52A2B60B90016A689 /* GradientViewExt.swift */,
 				3D0CA3ED29530F2C0034B5D0 /* ImageExt.swift */,
 				3D0CBFFC29658B7D00A6BC07 /* ImageViewExt.swift */,
 				3D54D3852A23628400C35BCB /* LabelExt.swift */,
@@ -551,7 +556,6 @@
 			children = (
 				3D0CA39D2952FB770034B5D0 /* LocalizableMessage.strings */,
 				3D2F2A46293F7D860022C0CB /* CollectionViewCustomLayout.swift */,
-				3D2F2A4F293F7D860022C0CB /* DateUtil.swift */,
 				3D2F2A51293F7D860022C0CB /* Enums.swift */,
 				3D2F2A66293F7D860022C0CB /* HelperUtil.swift */,
 				3D5073512A18D2E8001D04CF /* LoaderUtil.swift */,
@@ -560,6 +564,7 @@
 				3D0D0E18298E41B100AD09E6 /* PopupUtil.swift */,
 				3D2F2A65293F7D860022C0CB /* Protocols.swift */,
 				3D19EE6229711B070078B603 /* Snippets.swift */,
+				3D6291F22A2B347F0016A689 /* DateUtil */,
 				3D0CA3E729530F2C0034B5D0 /* Extensions */,
 				3D0CA44F295312910034B5D0 /* GoogleMap */,
 				3D9432C12A06508500AC11ED /* InAppPurchase */,
@@ -624,6 +629,15 @@
 				3D2F2A56293F7D860022C0CB /* URLRequest.swift */,
 			);
 			path = URLSessionManager;
+			sourceTree = "<group>";
+		};
+		3D6291F22A2B347F0016A689 /* DateUtil */ = {
+			isa = PBXGroup;
+			children = (
+				3D2F2A4F293F7D860022C0CB /* DateUtil.swift */,
+				3D6291F32A2B34E00016A689 /* DateUtilEnums.swift */,
+			);
+			path = DateUtil;
 			sourceTree = "<group>";
 		};
 		3D7BBF912976CA8B007D92BF /* Controllers */ = {
@@ -1097,6 +1111,7 @@
 				3D2F2A77293F7D860022C0CB /* LogHandler.swift in Sources */,
 				3D19EE6329711B070078B603 /* Snippets.swift in Sources */,
 				3DE7DB0F299A489500BF193B /* RxEmployeeVC.swift in Sources */,
+				3D6291F62A2B60B90016A689 /* GradientViewExt.swift in Sources */,
 				3D9432C32A0650B600AC11ED /* IAPUtil.swift in Sources */,
 				3D5CA8472A21CADA00C0E8DD /* DoubleExt.swift in Sources */,
 				3DC6611C29B5D40800022710 /* SocketEndpoints.swift in Sources */,
@@ -1104,6 +1119,7 @@
 				3DF0F63929769D4B002AB674 /* SocialPlatformAuthorizationUtil.swift in Sources */,
 				3D0D0E1D298E43A100AD09E6 /* MapSharedResources.swift in Sources */,
 				3D0CA3FC29530F2D0034B5D0 /* TextViewExt.swift in Sources */,
+				3D6291F42A2B34E00016A689 /* DateUtilEnums.swift in Sources */,
 				3DF0F63F2976A468002AB674 /* AuthorizationRequestM.swift in Sources */,
 				3D2F2A85293F7D860022C0CB /* HelperUtil.swift in Sources */,
 				3D0D0E2C298E724000AD09E6 /* RxLoginVC.swift in Sources */,

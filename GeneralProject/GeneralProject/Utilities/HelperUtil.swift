@@ -5,26 +5,26 @@ class HelperUtil {
 
     static let shared = HelperUtil()
 
-    func getCurrentVC(fetch: @escaping(UIViewController) -> Void) {
+    func getVisibleVC(_ fetch: @escaping (UIViewController) -> Void) {
         DispatchQueue.main.async {
-            if let currentVC = UIWindow.key?.topViewController() { fetch(currentVC) }
+            if let visibleVC = UIWindow.key?.visibleVC() { fetch(visibleVC) }
         }
     }
 
     func navigationBarSetUp(_ title: String? = nil) {
-        getCurrentVC { res in
+        getVisibleVC { visibleVC in
             // Set navigation item title
-            if let title = title { res.navigationItem.title = title }
-            res.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"),
-                                                                   style: .plain,
-                                                                   target: self,
-                                                                   action: #selector(self.handleBack))
+            if let title = title { visibleVC.navigationItem.title = title }
+            visibleVC.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"),
+                                                                         style: .plain,
+                                                                         target: self,
+                                                                         action: #selector(self.handleBack))
         }
     }
 
     @objc func handleBack(_ sender: UIBarButtonItem) {
-        getCurrentVC { res in
-            res.navigationController?.popViewController(animated: true)
+        getVisibleVC { visibleVC in
+            visibleVC.navigationController?.popViewController(animated: true)
         }
     }
 
@@ -47,9 +47,9 @@ class HelperUtil {
     }
 
     func pushViewController(_ destVC: UIViewController, _ isAnimated: Bool = false) {
-        getCurrentVC { currentVC in
+        getVisibleVC { visibleVC in
             DispatchQueue.main.async {
-                currentVC.navigationController?.pushViewController(destVC, animated: isAnimated)
+                visibleVC.navigationController?.pushViewController(destVC, animated: isAnimated)
             }
         }
     }

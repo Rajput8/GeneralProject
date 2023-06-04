@@ -16,8 +16,8 @@ class PopupUtil {
             }
             alert.addAction(action)
         }
-        HelperUtil.shared.getCurrentVC { currentVC in
-            currentVC.present(alert, animated: true, completion: nil)
+        HelperUtil.shared.getVisibleVC { visibleVC in
+            visibleVC.present(alert, animated: true, completion: nil)
         }
     }
 }

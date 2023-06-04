@@ -3,13 +3,13 @@ import Foundation
 final class SessionUploadTask {
 
     static func uploadTask<T: Decodable>(type: T.Type,
-                                         _ remoteRequestParams: APIRequestParams,
+                                         _ requestParams: APIRequestParams,
                                          _ completion: @escaping APIConstants.Handler<T>) {
 
         let session = APIConstants.remoteRequestSession
         let boundary = UUID().uuidString
 
-        guard let request = SessionURLRequest.urlRequest(remoteRequestParams, boundary) else {
+        guard let request = SessionURLRequest.urlRequest(requestParams, boundary) else {
             LoaderUtil.shared.hideLoading()
             completion(.failure(.invalidRequest)) // "unexpected_error".localized()
             return
@@ -20,7 +20,7 @@ final class SessionUploadTask {
         Monitor().startMonitoring { [ ] connection, reachable in
             let reachableStatus = Monitor.getCurrentConnectivityStatus(connection, reachable)
             if reachableStatus == .yes {
-                let data = uploadTaskParams(boundary, remoteRequestParams)
+                let data = uploadTaskParams(boundary, requestParams)
                 // Send a POST request to the URL, with the data we created earlier
                 let task = session.uploadTask(with: request, from: data, completionHandler: { data, response, err in
                     LogHandler.shared.responseLog(data, response, err)
@@ -39,10 +39,10 @@ final class SessionUploadTask {
         }
     }
 
-    private static func uploadTaskParams(_ boundary: String, _ remoteRequestParams: APIRequestParams) -> Data? {
+    private static func uploadTaskParams(_ boundary: String, _ requestParams: APIRequestParams) -> Data? {
         var data = Data()
-        if let params = remoteRequestParams.params {
-            LogHandler.shared.reportLogOnConsole(nil, "params is: \(remoteRequestParams.params ?? [:])")
+        if let params = requestParams.params {
+            LogHandler.shared.reportLogOnConsole(nil, "params is: \(requestParams.params ?? [:])")
             for(key, value) in params {
                 // Add the reqtype field and its value to the raw http request data
                 data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
@@ -51,7 +51,7 @@ final class SessionUploadTask {
             }
         }
 
-        if let medias = remoteRequestParams.mediaContent, medias.count > 0 {
+        if let medias = requestParams.mediaContent, medias.count > 0 {
             for media in medias {
                 let keyname = media.keyname.rawValue
                 let filename = media.filename

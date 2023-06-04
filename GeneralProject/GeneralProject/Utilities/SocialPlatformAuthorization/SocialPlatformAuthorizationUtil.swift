@@ -130,7 +130,7 @@ extension UIViewController {
         })
     }
 
-    fileprivate func getFBUserData(_ currentVC: UIViewController) {
+    fileprivate func getFBUserData(_ visibleVC: UIViewController) {
         let params = ["fields": "id, name, first_name, last_name, picture.type(large), email "]
         let graphRequest = GraphRequest.init(graphPath: "/me", parameters: params)
         let connection = GraphRequestConnection()
@@ -152,7 +152,7 @@ extension UIViewController {
         connection.start()
     }
 
-    func socialPlatformAuthorizationAPI(_ userData: AuthorizationRequestModel, _ currentVC: UIViewController) {
+    func socialPlatformAuthorizationAPI(_ userData: AuthorizationRequestModel, _ visibleVC: UIViewController) {
         // TODOs: under construction 😊
     }
 }
