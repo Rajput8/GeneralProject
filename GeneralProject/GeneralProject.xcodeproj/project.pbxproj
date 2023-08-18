@@ -94,6 +94,9 @@
 		3D7BBF8F2976B967007D92BF /* FBSDKCoreKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D7BBF932976CAB8007D92BF /* AuthorizationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7BBF922976CAB8007D92BF /* AuthorizationVM.swift */; };
 		3D7BBF952976D5DF007D92BF /* ObservableUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7BBF942976D5DF007D92BF /* ObservableUtil.swift */; };
+		3D8605B12A8F416A00BC6B31 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8605B02A8F416A00BC6B31 /* ImageCacheManager.swift */; };
+		3D8605B42A8F436300BC6B31 /* ImageViewExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8605B32A8F436300BC6B31 /* ImageViewExts.swift */; };
+		3D8605B62A8F438B00BC6B31 /* CacheResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8605B52A8F438B00BC6B31 /* CacheResources.swift */; };
 		3D9432C32A0650B600AC11ED /* IAPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9432C22A0650B600AC11ED /* IAPUtil.swift */; };
 		3D9432C52A0650F200AC11ED /* ReceiptResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9432C42A0650F200AC11ED /* ReceiptResponseModel.swift */; };
 		3D9432C72A06515200AC11ED /* ReceiptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9432C62A06515200AC11ED /* ReceiptUtil.swift */; };
@@ -249,6 +252,9 @@
 		3D7BBF8A2976B895007D92BF /* FBSDKCoreKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBSDKCoreKit.xcframework; path = Pods/FBSDKCoreKit/XCFrameworks/FBSDKCoreKit.xcframework; sourceTree = "<group>"; };
 		3D7BBF922976CAB8007D92BF /* AuthorizationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVM.swift; sourceTree = "<group>"; };
 		3D7BBF942976D5DF007D92BF /* ObservableUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableUtil.swift; sourceTree = "<group>"; };
+		3D8605B02A8F416A00BC6B31 /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		3D8605B32A8F436300BC6B31 /* ImageViewExts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExts.swift; sourceTree = "<group>"; };
+		3D8605B52A8F438B00BC6B31 /* CacheResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheResources.swift; sourceTree = "<group>"; };
 		3D9432C22A0650B600AC11ED /* IAPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPUtil.swift; sourceTree = "<group>"; };
 		3D9432C42A0650F200AC11ED /* ReceiptResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptResponseModel.swift; sourceTree = "<group>"; };
 		3D9432C62A06515200AC11ED /* ReceiptUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptUtil.swift; sourceTree = "<group>"; };
@@ -567,6 +573,7 @@
 				3D6291F22A2B347F0016A689 /* DateUtil */,
 				3D0CA3E729530F2C0034B5D0 /* Extensions */,
 				3D0CA44F295312910034B5D0 /* GoogleMap */,
+				3D8605B22A8F42C800BC6B31 /* CacheUtil */,
 				3D9432C12A06508500AC11ED /* InAppPurchase */,
 				3DF0F63629769D4B002AB674 /* SocialPlatformAuthorization */,
 				3DC6611829B5C81C00022710 /* Socket.io */,
@@ -647,6 +654,16 @@
 				3D0D0E2B298E724000AD09E6 /* RxLoginVC.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3D8605B22A8F42C800BC6B31 /* CacheUtil */ = {
+			isa = PBXGroup;
+			children = (
+				3D8605B02A8F416A00BC6B31 /* ImageCacheManager.swift */,
+				3D8605B32A8F436300BC6B31 /* ImageViewExts.swift */,
+				3D8605B52A8F438B00BC6B31 /* CacheResources.swift */,
+			);
+			path = CacheUtil;
 			sourceTree = "<group>";
 		};
 		3D9432C12A06508500AC11ED /* InAppPurchase */ = {
@@ -1147,6 +1164,7 @@
 				3DEDA2DC2972926B00977F06 /* DataSource.swift in Sources */,
 				3D0CA4382953125E0034B5D0 /* ScaleBarView.swift in Sources */,
 				3D2F2A84293F7D860022C0CB /* Protocols.swift in Sources */,
+				3D8605B12A8F416A00BC6B31 /* ImageCacheManager.swift in Sources */,
 				3D0D0E19298E41B100AD09E6 /* PopupUtil.swift in Sources */,
 				3DF0F63C2976A153002AB674 /* KeychainItem.swift in Sources */,
 				3DC6611A29B5C83A00022710 /* SocketUtil.swift in Sources */,
@@ -1154,6 +1172,7 @@
 				3D2F2A17293F7BA60022C0CB /* ViewController.swift in Sources */,
 				3D0CA3F829530F2D0034B5D0 /* TableViewExt.swift in Sources */,
 				3D2F2A75293F7D860022C0CB /* URLRequest.swift in Sources */,
+				3D8605B42A8F436300BC6B31 /* ImageViewExts.swift in Sources */,
 				3D0D0E21298E46E600AD09E6 /* APIEndpoints.swift in Sources */,
 				3D0D0E25298E477900AD09E6 /* APIRequestTypes.swift in Sources */,
 				3D0D0E27298E4FB500AD09E6 /* ValidatorType.swift in Sources */,
@@ -1178,6 +1197,7 @@
 				3D99424329FD2498006BB988 /* Keyname.swift in Sources */,
 				3D2F2A6B293F7D860022C0CB /* CollectionViewCustomLayout.swift in Sources */,
 				3D7BBF932976CAB8007D92BF /* AuthorizationVM.swift in Sources */,
+				3D8605B62A8F438B00BC6B31 /* CacheResources.swift in Sources */,
 				3D0CA3FF29530F2D0034B5D0 /* DateExt.swift in Sources */,
 				3D0CBFFD29658B7D00A6BC07 /* ImageViewExt.swift in Sources */,
 				3D2F2A72293F7D860022C0CB /* Enums.swift in Sources */,

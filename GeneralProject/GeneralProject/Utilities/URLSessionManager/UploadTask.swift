@@ -33,8 +33,9 @@ final class SessionUploadTask {
                 task.resume()
             } else {
                 LoaderUtil.shared.hideLoading()
-                APIRequestResources.shared.remoteErrorAlert("no_internet_connection".localized(),
-                                                            "device_connected_with_internet_warning".localized())
+                LoaderUtil.shared.noInternetConnection()
+//                APIRequestResources.shared.remoteErrorAlert("no_internet_connection".localized(),
+//                                                            "device_connected_with_internet_warning".localized())
             }
         }
     }
